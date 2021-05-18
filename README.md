@@ -42,3 +42,7 @@ Please visit below links to view wireframes.
 - [Billing details](https://wireframe.cc/Dhkgig)
 - [Payment method](https://wireframe.cc/74UK8u)
 - [Confirm Order](https://wireframe.cc/dcKWB4)
+
+# Deployment
+
+- Backend deployed on [heroku](https://lacompra-beta.herokuapp.com/)

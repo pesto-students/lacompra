@@ -17,6 +17,6 @@ app.use((req, res, next) => {
 });
 
 app.use('/', (req, res, next) => {
-  res.send("hello all")
+  res.send("Welcome to Lacompra's backend server")
 });
 module.exports = app;
