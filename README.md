@@ -46,3 +46,4 @@ Please visit below links to view wireframes.
 # Deployment
 
 - Backend deployed on [heroku](https://lacompra-beta.herokuapp.com/)
+- Frontend deployed on [Netlify](https://lacompra-beta.netlify.app/)
