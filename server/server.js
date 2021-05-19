@@ -1,3 +1,6 @@
+const dotenv = require('dotenv');
+const mongoose = require('mongoose');
+
 //uncaught exceptions handler
 //uncaught exceptions occurs when there is error in synchronous code
 //example : console.log(x); where 'x' is not defined
@@ -9,6 +12,26 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
+//This will read from config.env and save all the variables in nodes process.env
+dotenv.config({
+  path: './config.env',
+});
+
+const DB = process.env.DATABASE.replace(
+  '<password>',
+  process.env.DATABASE_PASSWORD
+);
+//connect to mongodb
+mongoose
+  .connect(DB, {
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log('DB conection success');
+  });
 
 //app file is required after config.env because app.js require access to env variables
 const app = require('./app');
