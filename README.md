@@ -47,3 +47,9 @@ Please visit below links to view wireframes.
 
 - Backend deployed on [heroku](https://lacompra-beta.herokuapp.com/)
 - Frontend deployed on [Netlify](https://lacompra-beta.netlify.app/)
+
+# Local development
+
+- run `npm i` inside server folder to install the dependencies.
+- rename server/config.sample.env to server/config.env and add the required values.
+- run `npm start` inside server folder to run the backend server at http://localhost:5000.
