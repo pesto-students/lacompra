@@ -42,6 +42,7 @@ const port = process.env.PORT || 5000;
 
 const server = app.listen(port, () => {
   console.log(`working on port ${port} and mode is ${process.env.NODE_ENV}`);
+  console.log("process.env:", process.env);
 });
 
 //asyncronous code error handler
