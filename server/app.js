@@ -24,8 +24,14 @@ app.use((req, res, next) => {
   next();
 });
 
+
+
+
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/products', productRoutes)
+app.use('/', function (req, res) {
+  res.json({ message: 'hooray! welcome to our api!' })
+});
 
 app.use(function (req, res, next) {
   next(new AppError(`cant find ${req.originalUrl} on this server`, 404));
