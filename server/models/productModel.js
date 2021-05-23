@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema;
+const slugify = require('slugify');
 
 const productSchema = new mongoose.Schema(
   {
@@ -18,8 +19,6 @@ const productSchema = new mongoose.Schema(
     slug: {
       type: String,
       unique: true,
-      lowercase: true,
-      index: true,
     },
     description: {
       type: String,
@@ -34,8 +33,9 @@ const productSchema = new mongoose.Schema(
       maxlength: 10,
     },
     category: {
-      type: ObjectId,
-      ref: "Category",
+      type: String,
+      enum: ["jeans", "trousers", "tshirts", "shirts", "jackets"],
+      required: true,
     },
     quantity: Number,
     sold: {
@@ -51,12 +51,14 @@ const productSchema = new mongoose.Schema(
       required: true,
     },
     gender: {
-      required: true,
-      enum: ["male", "female"]
+      type: String,
+      enum: ["male", "female"],
+      required: [true, 'gender is required'],
     },
     size: {
-      required: true,
-      enum: ['s', 'm', 'l', 'xl']
+      type: String,
+      enum: ['s', 'm', 'l', 'xl'],
+      required: [true, 'size is required'],
     },
     brand: {
       type: String,
@@ -71,5 +73,9 @@ const productSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+productSchema.pre('save', function (next) {
+  this.slug = slugify(this.title, { lower: true });
+  next();
+});
 
 module.exports = mongoose.model("Product", productSchema);
