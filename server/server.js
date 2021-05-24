@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 //uncaught exceptions occurs when there is error in synchronous code
 //example : console.log(x); where 'x' is not defined
 process.on('uncaughtException', (err) => {
+  console.log('err: ', err);
   console.log('======= server shut down : UNCAUGHT EXCEPTION =======');
   console.log('name: ', err.name);
   console.log('message: ', err.message);
@@ -50,6 +51,7 @@ const server = app.listen(port, () => {
 //We can suscribe it by .on()
 //this works like safety net if we forget tryCatch block over promise
 process.on('unhandledRejection', (err) => {
+  console.log('err: ', err);
   console.log('======= server shut down : UNHANDLED REJECTION =======');
   console.log('name: ', err.name);
   console.log('message: ', err.message);

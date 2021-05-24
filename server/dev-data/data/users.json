@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Jennifer Hardy",
+    "email": "jennifer@example.com",
+    "password": "password123"
+  },
+  {
+    "name": "Kate Morrison",
+    "email": "kate@example.com",
+    "password": "password123"
+  },
+  {
+    "name": "Eliana Stout",
+    "email": "eliana@example.com",
+    "password": "password123"
+  },
+  {
+    "name": "Cristian Vega",
+    "email": "chris@example.com",
+    "password": "password123"
+  },
+    {
+    "_id": "5c8a211f2f8fb814b56fa188",
+    "name": "Amritanshu Rai",
+    "email": "rai@example.com",
+    "password": "password123"
+  }
+]
