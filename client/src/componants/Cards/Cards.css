@@ -1,0 +1,19 @@
+body {
+  background-image: url("../../resources/svg.png");
+}
+._card-container {
+  width: 100vw;
+  height: 30rem;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 16px;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+h1 {
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
