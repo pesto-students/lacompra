@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const fs = require('fs');
 const { User } = require('../../models/userModel');
 const Product = require('../../models/productModel');
+const { Review } = require('../../models/reviewModel');
 
 //This will read from config.env and save all the variables in nodes process.env
 dotenv.config({
@@ -36,6 +37,7 @@ const deleteData = async () => {
   try {
     await Product.deleteMany();
     await User.deleteMany();
+    await Review.deleteMany();
     console.log('successful db deleted');
   } catch (error) {
     console.log('error: ', error);
@@ -48,6 +50,7 @@ const resetData = async () => {
   try {
     await Product.deleteMany();
     await User.deleteMany();
+    await Review.deleteMany();
 
     await Product.create(products);
     await User.create(users);

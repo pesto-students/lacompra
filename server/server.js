@@ -51,6 +51,7 @@ const server = app.listen(port, () => {
 //We can suscribe it by .on()
 //this works like safety net if we forget tryCatch block over promise
 process.on('unhandledRejection', (err) => {
+  console.log('err: ', err);
   console.log('======= server shut down : UNHANDLED REJECTION =======');
   console.log('name: ', err.name);
   console.log('message: ', err.message);

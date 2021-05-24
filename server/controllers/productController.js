@@ -1,30 +1,32 @@
 const catchAysnc = require('../utils/catchAsync');
 const Product = require('../models/productModel.js');
+const factory = require('./handlerFactory');
 
 // @desc    Fetch all products
 // @route   GET /products
 // @access  Public
-exports.getProducts = catchAysnc(async (req, res) => {
-  // const pageSize = 10
-  // const page = Number(req.query.pageNumber) || 1
+// exports.getProducts = catchAysnc(async (req, res) => {
+//   // const pageSize = 10
+//   // const page = Number(req.query.pageNumber) || 1
 
-  // const keyword = req.query.keyword
-  //   ? {
-  //     name: {
-  //       $regex: req.query.keyword,
-  //       $options: 'i',
-  //     },
-  //   }
-  //   : {}
+//   // const keyword = req.query.keyword
+//   //   ? {
+//   //     name: {
+//   //       $regex: req.query.keyword,
+//   //       $options: 'i',
+//   //     },
+//   //   }
+//   //   : {}
 
-  // const count = await Product.countDocuments({ ...keyword })
-  // const products = await Product.find({ ...keyword })
-  //   .limit(pageSize)
-  //   .skip(pageSize * (page - 1))
+//   // const count = await Product.countDocuments({ ...keyword })
+//   // const products = await Product.find({ ...keyword })
+//   //   .limit(pageSize)
+//   //   .skip(pageSize * (page - 1))
 
-  const products = await Product.find()
-  res.status(200).json(products);
-})
+//   const products = await Product.find()
+//   res.status(200).json(products);
+// })
+exports.getProducts = factory.getAll(Product);
 
 // @desc    Fetch single product
 // @route   GET /products/:id

@@ -64,7 +64,7 @@ exports.getOne = (Model, populateOptions) =>
 exports.getAll = (Model, populateOptions) =>
   catchAysnc(async (req, res, next) => {
     let filter = {};
-    if (req.params.tourId) filter = { tour: req.params.tourId };
+    if (req.params.productId) filter = { product: req.params.productId };
 
     const features = new ApiFeatures(Model.find(filter), req.query)
       .filter()

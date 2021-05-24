@@ -4,6 +4,7 @@ const cors = require('cors');
 
 const userRouter = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes.js');
+const reviewRouter = require('./routes/reviewRoutes');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -29,6 +30,8 @@ app.use((req, res, next) => {
 
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/products', productRoutes)
+app.use('/api/v1/reviews', reviewRouter);
+
 app.use('/', function (req, res) {
   res.json({ message: 'hooray! welcome to our api!' })
 });

@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { ObjectId } = mongoose.Schema;
 const slugify = require('slugify');
 
 const productSchema = new mongoose.Schema(
@@ -64,14 +63,30 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    ratings: [
-      {
-        star: Number,
-        postedBy: { type: ObjectId, ref: "User" },
-      },
-    ],
+    ratingsAverage: {
+      default: 0,
+      type: Number,
+      min: [0, 'ratingsAverage must be above 1.0'],
+      max: [5, 'ratingsAverage must be below 5.0'],
+      //this will run each value is set
+      //4.66666 * 10 = 46.6666; Math.round(46.6666) = 47 / 10 = 4.7
+      set: (val) => Math.round(val * 10) / 10,
+    },
+    ratingsQuantity: {
+      default: 0,
+      type: Number,
+    },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
+
+    toObject: {
+      virtuals: true,
+    },
+  }
 );
 productSchema.pre('save', function (next) {
   this.slug = slugify(this.title, { lower: true });

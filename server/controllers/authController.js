@@ -69,7 +69,6 @@ exports.login = catchAysnc(async (req, res, next) => {
 });
 
 exports.protect = catchAysnc(async (req, res, next) => {
-  console.log("req.cookies :", req.headers.cookie);
   let token;
   if (
     req.headers.cookie &&
