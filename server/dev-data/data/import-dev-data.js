@@ -4,6 +4,8 @@ const fs = require('fs');
 const { User } = require('../../models/userModel');
 const Product = require('../../models/productModel');
 const { Review } = require('../../models/reviewModel');
+const Cart = require('../../models/cartModel');
+
 
 //This will read from config.env and save all the variables in nodes process.env
 dotenv.config({
@@ -30,6 +32,7 @@ mongoose
 //read json data
 const products = JSON.parse(fs.readFileSync(`${__dirname}/products.json`, 'utf-8'));
 const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'));
+const carts = JSON.parse(fs.readFileSync(`${__dirname}/carts.json`, 'utf-8'));
 
 
 //delete data from databse
@@ -38,6 +41,7 @@ const deleteData = async () => {
     await Product.deleteMany();
     await User.deleteMany();
     await Review.deleteMany();
+    await Cart.deleteMany();
     console.log('successful db deleted');
   } catch (error) {
     console.log('error: ', error);
@@ -51,10 +55,11 @@ const resetData = async () => {
     await Product.deleteMany();
     await User.deleteMany();
     await Review.deleteMany();
+    await Cart.deleteMany();
 
     await Product.create(products);
     await User.create(users);
-
+    await Cart.create(carts);
   } catch (error) {
     console.log('error: ', error);
   } finally {

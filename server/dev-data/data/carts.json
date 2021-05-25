@@ -1,0 +1,21 @@
+[{
+    "_id": "60abf02ec7aece36b35eea02",
+        "products": [
+            {
+                "_id": "60abf02ec7aece36b35eea03",
+                "product": "60abf0061f496d36af8d85a7",
+                "count": 2,
+                "price": 30
+            },
+            {
+                "_id": "60abf02ec7aece36b35eea04",
+                "product": "60abf0061f496d36af8d85a6",
+                "count": 1,
+                "price": 10
+            }
+        ],
+        "cartTotal": 40,
+        "orderdBy": "5c8a211f2f8fb814b56fa188"
+}]
+
+  
