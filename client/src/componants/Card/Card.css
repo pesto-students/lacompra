@@ -1,0 +1,53 @@
+._card {
+  height: 30rem;
+  width: 20rem;
+  box-shadow: 0 30px 30px rgba(0, 0, 0, 0.5);
+  position: relative;
+  background: #000;
+  border-radius: 10px;
+}
+._card ._image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+._card ._image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+
+._card:hover ._image img {
+  opacity: 0.5;
+}
+
+._card ._card-body {
+  position: absolute;
+  bottom: 20px;
+  left: 10%;
+  width: 80%;
+  height: 50px;
+  overflow: hidden;
+  background: #777777;
+  transition: 0.5s;
+  padding: 15px;
+  box-sizing: border-box;
+}
+._card:hover ._card-body {
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+._card-body {
+}
