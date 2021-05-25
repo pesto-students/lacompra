@@ -112,3 +112,44 @@ exports.emptyCart = async (req, res) => {
     data: {}
   });
 };
+
+exports.addToWishlist = catchAysnc(async (req, res) => {
+  const { product } = req.body;
+  const wishlist = await User.findByIdAndUpdate(
+    req.user.id,
+    { $addToSet: { wishlist: product } }, {
+    new: true,
+    runValidators: true,
+  }
+  ).select("wishlist").populate("wishlist");
+  res.status(200).json({
+    status: 'success',
+    data: wishlist
+  });
+});
+
+exports.wishlist = catchAysnc(async (req, res) => {
+  const list = await User.findById(req.user._id)
+    .select("wishlist")
+    .populate("wishlist");
+  res.status(200).json({
+    status: 'success',
+    data: list
+  });
+});
+
+exports.removeFromWishlist = catchAysnc(async (req, res) => {
+  const { product } = req.body;
+  const user = await User.findByIdAndUpdate(
+    req.user._id,
+    { $pull: { wishlist: product } }, {
+    new: true,
+    runValidators: true,
+  }
+  ).select("wishlist").populate("wishlist");
+
+  res.status(200).json({
+    status: 'success',
+    data: user
+  });
+});
