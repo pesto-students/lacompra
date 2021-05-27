@@ -2,9 +2,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import { PrevButton, NextButton } from "./CarouselButtons";
 import { useEmblaCarousel as useCarousel } from "embla-carousel/react";
 import "./carousel.styles.css";
-const Carousel = ({ slides, children }) => {
-  console.log("slides: ", slides);
-  const [viewportRef, carousel] = useCarousel({ skipSnaps: false });
+const Carousel = ({ config, slides, children }) => {
+  const [viewportRef, carousel] = useCarousel(config?.viewportConfig);
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
 
@@ -34,32 +33,51 @@ const Carousel = ({ slides, children }) => {
         <div className="carousel__container">
           {slides &&
             slides.map((slide) => (
-              <div className="carousel__slide" key={slide}>
+              <div
+                className="carousel__slide"
+                style={{
+                  minWidth: config?.minWidth,
+                  height: config?.height,
+                }}
+                key={slide}
+              >
                 <div className="carousel__slide__inner">
                   <div
                     style={{
                       backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), transparent),url(img/${slide}.jpg)`,
-                      backgroundSize: "cover",
-                      backgroundRepeat: "no-repeat",
-                      backgroundPosition: "center",
-                      filter: "grayscale(1)",
                     }}
+                    className={`${config?.key} carousel__slide_img`}
                   >
                     <section
+                      className="carousel__slide__section"
                       style={{
-                        height: "95vh",
-                        color: "white",
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        textAlign: "center",
+                        height: config?.height,
+                        justifyContent:
+                          config?.key === "productCarousel"
+                            ? "flex-end"
+                            : "center",
                       }}
                     >
-                      <h2 style={{ fontSize: "8rem" }}>
-                        Buy Premium <br /> {slide.toUpperCase()}
-                      </h2>
-                      <button className="carousel_cta">shop now</button>
+                      {config?.key === "hero" && (
+                        <>
+                          <h2 style={{ fontSize: "8rem" }}>
+                            Buy Premium <br /> {slide.toUpperCase()}
+                          </h2>
+                          <button className="hero carousel__cta">
+                            shop now
+                          </button>
+                        </>
+                      )}
+                      {config?.key === "productCarousel" && (
+                        <>
+                          <button className="productCarousel carousel__cta">
+                            Add to Cart
+                          </button>
+                          <button className="productCarousel carousel__cta">
+                            Add to wishlist
+                          </button>
+                        </>
+                      )}
                     </section>
                   </div>
                 </div>

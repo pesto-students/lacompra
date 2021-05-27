@@ -1,11 +1,16 @@
 //Components
 import Header from "./components/header/Header.jsx";
 import Hero from "./components/hero/Hero.jsx";
+import ProductCarousel from "./components/productCarousel/ProductCarousel.jsx";
+
 function App() {
   return (
     <>
       <Header />
-      <Hero />
+      <main>
+        <Hero />
+        <ProductCarousel />
+      </main>
     </>
   );
 }
