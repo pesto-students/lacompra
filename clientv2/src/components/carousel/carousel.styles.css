@@ -9,7 +9,27 @@
   overflow: hidden;
   width: 100%;
 }
-
+.testimonial.carousel__viewport {
+  width: 70%;
+  margin: 0 auto;
+}
+.testimonial__text {
+  font-size: 2rem;
+  letter-spacing: 1px;
+  width: 90%;
+  margin: 0 auto;
+}
+.testimonial svg {
+  font-size: 4rem;
+  margin: 1rem auto;
+}
+.testimonial__person {
+  font-size: 2rem;
+  letter-spacing: 1px;
+  font-weight: 900;
+  font-style: italic;
+  margin: 1rem;
+}
 .carousel__viewport.is-draggable {
   cursor: move;
   cursor: grab;

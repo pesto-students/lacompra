@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { PrevButton, NextButton } from "./CarouselButtons";
 import { useEmblaCarousel as useCarousel } from "embla-carousel/react";
+import { FaQuoteLeft } from "react-icons/fa";
+
 import "./carousel.styles.css";
 const Carousel = ({ config, slides, children }) => {
   const [viewportRef, carousel] = useCarousel(config?.viewportConfig);
@@ -29,7 +31,7 @@ const Carousel = ({ config, slides, children }) => {
 
   return (
     <div className="carousel">
-      <div className="carousel__viewport" ref={viewportRef}>
+      <div className={`${config?.key} carousel__viewport`} ref={viewportRef}>
         <div className="carousel__container">
           {slides &&
             slides.map((slide) => (
@@ -77,6 +79,22 @@ const Carousel = ({ config, slides, children }) => {
                             Add to wishlist
                           </button>
                         </>
+                      )}
+                      {config?.key === "testimonial" && (
+                        <div className={config?.key}>
+                          <FaQuoteLeft />
+
+                          <p className="testimonial__text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis
+                            nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat.
+                          </p>
+                          <h2 className="testimonial__person">
+                            {config?.name || "Scooby"}
+                          </h2>
+                        </div>
                       )}
                     </section>
                   </div>

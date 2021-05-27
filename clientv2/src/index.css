@@ -77,3 +77,12 @@ a {
   text-decoration: none;
   color: var(--neutral-900);
 }
+.carouselHeading {
+  min-height: 20vh;
+  font-size: 4rem;
+  background-color: var(--neutral-200);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}

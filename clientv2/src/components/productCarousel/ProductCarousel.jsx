@@ -13,9 +13,9 @@ const ProductCarousel = () => {
   const slides = ["jacket", "jeans", "shoe", "tshirt"];
   return (
     <section className="productCarousel">
-      <h2 className="heading">Latest Products</h2>
+      <h2 className="carouselHeading">Latest Products</h2>
       <Carousel config={config} slides={slides} />
-      <h2 className="heading">Most Popular Products</h2>
+      <h2 className="carouselHeading">Most Popular Products</h2>
       <Carousel config={config} slides={slides} />
     </section>
   );
