@@ -23,27 +23,6 @@
     li {
       padding: 0.5rem 1rem;
       letter-spacing: 1px;
-
-      a {
-        position: relative;
-      }
-
-      a:before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 0;
-        bottom: -2px;
-        left: 0;
-        background-color: var(--neutral-400);
-        visibility: hidden;
-        transition: all 0.1s ease-in-out;
-      }
-
-      a:hover:before {
-        visibility: visible;
-        height: 1px;
-      }
     }
   }
 }
