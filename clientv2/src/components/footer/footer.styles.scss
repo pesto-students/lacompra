@@ -10,9 +10,12 @@ footer {
 
     div {
       display: flex;
-      width: 40%;
+      width: 70%;
       justify-content: flex-end;
       align-items: center;
+      @media (max-width: 568px) {
+        width: auto;
+      }
     }
     span {
       margin: 4px;
@@ -20,6 +23,11 @@ footer {
     a {
       font-weight: 900;
       letter-spacing: 1px;
+    }
+    @media (max-width: 568px) {
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
     }
   }
 }

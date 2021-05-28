@@ -43,7 +43,10 @@
     border: none;
     outline: none;
     border-bottom: 1px solid var(--neutral-400);
-
+    max-width: 100%;
+    @media only screen and(max-width:786px) {
+      height: 26px;
+    }
     &:focus {
       + .input-highlight {
         border-top: 1px solid #fbc91b;

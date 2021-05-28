@@ -4,8 +4,6 @@ const Testimonial = () => {
   const slides = ["jacket", "jeans", "shoe", "tshirt"];
   const config = {
     key: "testimonial",
-    height: "60vh",
-    minWidth: "100%",
     viewportConfig: {
       skipSnaps: false,
     },

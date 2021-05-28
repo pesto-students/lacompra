@@ -3,11 +3,9 @@ import "./productCarousel.styles.scss";
 const ProductCarousel = () => {
   const config = {
     key: "productCarousel",
-    height: "40vh",
-    minWidth: "33.33%",
     viewportConfig: {
-      skipSnaps: false,
-      slidesToScroll: 3,
+      dragFree: true,
+      containScroll: "trimSnaps",
     },
   };
   const slides = ["jacket", "jeans", "shoe", "tshirt"];

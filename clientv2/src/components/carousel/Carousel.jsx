@@ -37,10 +37,10 @@ const Carousel = ({ config, slides, children }) => {
             slides.map((slide) => (
               <div
                 className="carousel__slide"
-                style={{
-                  minWidth: config?.minWidth,
-                  height: config?.height,
-                }}
+                // style={{
+                //   minWidth: config?.minWidth,
+                //   height: config?.height,
+                // }}
                 key={slide}
               >
                 <div className="carousel__slide__inner">
@@ -52,17 +52,17 @@ const Carousel = ({ config, slides, children }) => {
                   >
                     <section
                       className="carousel__slide__section"
-                      style={{
-                        height: config?.height,
-                        justifyContent:
-                          config?.key === "productCarousel"
-                            ? "flex-end"
-                            : "center",
-                      }}
+                      // style={{
+                      //   height: config?.height,
+                      //   justifyContent:
+                      //     config?.key === "productCarousel"
+                      //       ? "flex-end"
+                      //       : "center",
+                      // }}
                     >
                       {config?.key === "hero" && (
                         <>
-                          <h2 style={{ fontSize: "8rem" }}>
+                          <h2 className="carousel__slide__heading">
                             Buy Premium <br /> {slide.toUpperCase()}
                           </h2>
                           <button className="hero carousel__cta">

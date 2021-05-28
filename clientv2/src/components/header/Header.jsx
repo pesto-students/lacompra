@@ -1,4 +1,6 @@
 import Search from "../search/Search";
+import Hamburger from "../hamburger/Hamburger";
+
 import "./header.styles.scss";
 const Header = () => {
   return (
@@ -6,6 +8,7 @@ const Header = () => {
       <nav>
         <h1 id="logo">La Compra</h1>
         <Search />
+        <Hamburger />
         <ul>
           <li>
             <a href="#about">Categories</a>

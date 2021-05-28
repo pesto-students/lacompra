@@ -98,9 +98,20 @@ a:hover:before {
 .carouselHeading {
   min-height: 20vh;
   font-size: 4rem;
+  letter-spacing: 1.2px;
   background-color: var(--neutral-200);
   display: flex;
   justify-content: center;
   text-align: center;
   align-items: center;
+}
+@media (max-width: 768px) {
+  .carouselHeading {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 568px) {
+  .carouselHeading {
+    font-size: 2rem;
+  }
 }

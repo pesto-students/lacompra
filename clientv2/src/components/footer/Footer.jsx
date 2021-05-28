@@ -1,7 +1,7 @@
 import "./footer.styles.scss";
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer>
       <ul>
         <li>
           <span>© La Compra 2021.</span>
