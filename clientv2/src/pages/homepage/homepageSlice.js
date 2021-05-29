@@ -3,15 +3,15 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async () => {
-    const response = await fetch('https://lacompra-beta.herokuapp.com/api/v1/products');
-    return response.data
+    const response = await fetch('http://localhost:5000/api/v1/products');
+    return await response.json();
   }
 )
 
-const productsSlice = createSlice({
+export const productsSlice = createSlice({
   name: 'products',
   initialState: {
-    products: [],
+    allProducts: [],
     loading: "idle",
     error: "",
   },
@@ -19,12 +19,12 @@ const productsSlice = createSlice({
   extraReducers: (builder) => {
     //fetchProducts.pending === 'products/fetchProducts/pending'
     builder.addCase(fetchProducts.pending, (state) => {
-      state.products = [];
+      state.allProducts = [];
       state.loading = "loading";
     });
     builder.addCase(
       fetchProducts.fulfilled, (state, { payload }) => {
-        state.products = payload;
+        state.allProducts = payload.data;
         state.loading = "loaded";
       });
     builder.addCase(
@@ -33,7 +33,6 @@ const productsSlice = createSlice({
         state.error = action.error.message;
       });
   }
-})
-
+});
 
 export default productsSlice;
