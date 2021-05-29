@@ -35,14 +35,7 @@ const Carousel = ({ config, slides, children }) => {
         <div className="carousel__container">
           {slides &&
             slides.map((slide) => (
-              <div
-                className="carousel__slide"
-                // style={{
-                //   minWidth: config?.minWidth,
-                //   height: config?.height,
-                // }}
-                key={slide}
-              >
+              <div className="carousel__slide" key={slide}>
                 <div className="carousel__slide__inner">
                   <div
                     style={{
@@ -50,16 +43,7 @@ const Carousel = ({ config, slides, children }) => {
                     }}
                     className={`${config?.key} carousel__slide_img`}
                   >
-                    <section
-                      className="carousel__slide__section"
-                      // style={{
-                      //   height: config?.height,
-                      //   justifyContent:
-                      //     config?.key === "productCarousel"
-                      //       ? "flex-end"
-                      //       : "center",
-                      // }}
-                    >
+                    <section className="carousel__slide__section">
                       {config?.key === "hero" && (
                         <>
                           <h2 className="carousel__slide__heading">
