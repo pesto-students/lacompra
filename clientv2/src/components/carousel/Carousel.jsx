@@ -25,8 +25,6 @@ const Carousel = ({ config, slides }) => {
         <div className="carousel__container">
           {slides.length &&
             slides.map((slide) => {
-              console.log("slide: ", slide?.images?.[0]);
-
               return (
                 <div className="carousel__slide" key={slide._id}>
                   <div className="carousel__slide__inner">

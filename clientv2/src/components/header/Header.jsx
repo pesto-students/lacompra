@@ -1,14 +1,25 @@
+import { useDispatch } from "react-redux";
+import { sidedrawerOpen } from "../sidedrawer/sidedrawerSlice";
+
 import Search from "../search/Search";
-import Hamburger from "../hamburger/Hamburger";
 
 import "./header.styles.scss";
 const Header = () => {
+  const dispatch = useDispatch();
+  const handleClickHamburger = () => {
+    dispatch(sidedrawerOpen());
+  };
+
   return (
     <header className="header">
       <nav>
         <h1 id="logo">La Compra</h1>
         <Search />
-        <Hamburger />
+        <button className="hamburger-button" onClick={handleClickHamburger}>
+          <div className="hamburger-button__line" />
+          <div className="hamburger-button__line" />
+          <div className="hamburger-button__line" />
+        </button>
         <ul>
           <li>
             <a href="#about">Categories</a>

@@ -3,7 +3,6 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 export const fetchTopProducts = createAsyncThunk(
   'topProducts/fetchTopProducts',
   async () => {
-    console.log("here");
     const response = await fetch('http://localhost:5000/api/v1/products?sort=-sold');
     return await response.json();
   }
