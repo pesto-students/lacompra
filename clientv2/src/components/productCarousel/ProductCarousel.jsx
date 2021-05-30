@@ -6,9 +6,7 @@ import Carousel from "../carousel/Carousel";
 import "./productCarousel.styles.scss";
 const ProductCarousel = () => {
   const dispatch = useDispatch();
-  const { loading, error, topProducts } = useSelector(
-    (state) => state.topProducts
-  );
+  const { loading, topProducts } = useSelector((state) => state.topProducts);
   const { allProducts } = useSelector((state) => state.products);
   useEffect(() => {
     dispatch(fetchTopProducts());

@@ -1,9 +1,10 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import backendDomain from '../../utils/backend'
 
 export const fetchTopProducts = createAsyncThunk(
   'topProducts/fetchTopProducts',
   async () => {
-    const response = await fetch('http://localhost:5000/api/v1/products?sort=-sold');
+    const response = await fetch(`${backendDomain}/api/v1/products?sort=-sold`);
     return await response.json();
   }
 )
