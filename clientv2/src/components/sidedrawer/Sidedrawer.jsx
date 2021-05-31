@@ -3,12 +3,31 @@ import { sidedrawerClose } from "./sidedrawerSlice";
 import { AiOutlineClose } from "react-icons/ai";
 import "./sidedrawer.styles.scss";
 
-const Sidedrawer = ({ children }) => {
+import Wishlist from "../wishlist/Wishlist";
+
+const Sidedrawer = () => {
   const dispatch = useDispatch();
-  const status = useSelector((state) => state.sidedrawer.status);
+  const { status, showComponent: component } = useSelector(
+    (state) => state.sidedrawer
+  );
   const handleSidedrawer = () => {
     if (status === "open") {
       dispatch(sidedrawerClose());
+    }
+  };
+
+  const showComponent = (component) => {
+    switch (component) {
+      case "wishlist":
+        return <Wishlist />;
+      // case "cart":
+      //   return <Cart />;
+      // case "hamburger":
+      //   return <Hamburger />;
+      // case "filters":
+      //   return <Filter />;
+      default:
+        return "";
     }
   };
   return (
@@ -18,7 +37,7 @@ const Sidedrawer = ({ children }) => {
           className="sidedrawer_close"
           onClick={handleSidedrawer}
         />
-        <div>{children}</div>
+        <div>{status === "open" && showComponent(component)}</div>
       </div>
     </div>
   );

@@ -3,9 +3,13 @@ import { PrevButton, NextButton } from "./CarouselButtons";
 import { useEmblaCarousel as useCarousel } from "embla-carousel/react";
 import { FaQuoteLeft } from "react-icons/fa";
 
+import { useDispatch } from "react-redux";
+import { addToWishlist } from "../wishlist/wishlistSlice";
 import "./carousel.styles.css";
 
 const Carousel = ({ config, slides }) => {
+  const dispatch = useDispatch();
+
   const [viewportRef, carousel] = useCarousel(config?.viewportConfig);
   const Image = ({ src, componentName, children }) => {
     return (
@@ -43,11 +47,21 @@ const Carousel = ({ config, slides }) => {
                         {config?.key === "productCarousel" && (
                           <>
                             <button className="productCarousel carousel__cta">
-                              Add to Cart
+                              View Product
                             </button>
-                            <button className="productCarousel carousel__cta">
+                            <button
+                              onClick={() =>
+                                dispatch(
+                                  addToWishlist("60abf0061f496d36af8d85a6")
+                                )
+                              }
+                              className="productCarousel carousel__cta"
+                            >
                               Add to wishlist
                             </button>
+                            <h4 className={`${config.key} title`}>
+                              {slide?.title}
+                            </h4>
                           </>
                         )}
                         {config?.key === "testimonial" && (

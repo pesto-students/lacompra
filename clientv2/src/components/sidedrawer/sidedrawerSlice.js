@@ -4,13 +4,16 @@ const sidedrawerSlice = createSlice({
   name: 'sidedrawer',
   initialState: {
     status: "close",
+    showComponent: "",
   },
   reducers: {
-    sidedrawerOpen: (state) => {
+    sidedrawerOpen: (state, { payload }) => {
       state.status = "open";
+      state.showComponent = payload;
     },
     sidedrawerClose: (state) => {
       state.status = "close";
+      state.showComponent = "";
     }
   }
 });

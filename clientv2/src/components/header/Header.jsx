@@ -9,7 +9,9 @@ const Header = () => {
   const handleClickHamburger = () => {
     dispatch(sidedrawerOpen());
   };
-
+  const handleWishlistClick = () => {
+    dispatch(sidedrawerOpen("wishlist"));
+  };
   return (
     <header className="header">
       <nav>
@@ -27,7 +29,7 @@ const Header = () => {
           <li>
             <a href="#cart">cart</a>
           </li>
-          <li>
+          <li onClick={handleWishlistClick}>
             <a href="#cart">wishlist</a>
           </li>
           <li>

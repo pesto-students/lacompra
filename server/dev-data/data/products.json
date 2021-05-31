@@ -1,53 +1,76 @@
- [{"user":"5c8a211f2f8fb814b56fa188",
-   "_id":"60abf0061f496d36af8d85a7",
-   "sold":"2",
-    "title": "shirt men",
-    "description": "Random desc",
-    "price": "10",
-    "color": "Blue",
-    "gender": "male",
-    "brand": "gucci",
-    "size": "l",
-    "category":"trousers",
-    "images":["https://wallpaperaccess.com/full/82955.jpg","https://storage.sg.content-cdn.io/cdn-cgi/image/%7Bwidth%7D,%7Bheight%7D,quality=60,format=auto,fit=cover,g=top/in-resources/22a79ec5-e694-4d7a-ac5a-85c8fa45b7f1/Images/ProductImages/Source/ITMTR00385Light%20Grey%20(2).jpg","https://storage.sg.content-cdn.io/cdn-cgi/image/%7Bwidth%7D,%7Bheight%7D,quality=60,format=auto,fit=cover,g=top/in-resources/22a79ec5-e694-4d7a-ac5a-85c8fa45b7f1/Images/ProductImages/Source/ITMTR00385Light%20Grey%20(4).jpg"]
- },
- {"user":"5c8a211f2f8fb814b56fa188",
-   "_id":"60abf0061f496d36af8d85a6",
-    "title": "shirt abc",
-    "description": "Random desc",
-   "sold":"3",
-
-    "price": "12",
-    "color": "Green",
-    "gender": "female",
-    "brand": "Jack",
-    "size": "xl",
-    "category":"tshirts",
-    "images":["https://wallpaperaccess.com/full/82955.jpg","https://storage.sg.content-cdn.io/cdn-cgi/image/%7Bwidth%7D,%7Bheight%7D,quality=60,format=auto,fit=cover,g=top/in-resources/22a79ec5-e694-4d7a-ac5a-85c8fa45b7f1/Images/ProductImages/Source/ITMTR00385Light%20Grey%20(2).jpg","https://storage.sg.content-cdn.io/cdn-cgi/image/%7Bwidth%7D,%7Bheight%7D,quality=60,format=auto,fit=cover,g=top/in-resources/22a79ec5-e694-4d7a-ac5a-85c8fa45b7f1/Images/ProductImages/Source/ITMTR00385Light%20Grey%20(4).jpg"]
- },
- {"user":"5c8a211f2f8fb814b56fa188",
-    "title": "sadasdsa xyz",
-    "description": "Random desc",
-    "price": "10",
-   "sold":"10",
-
-    "color": "Blue",
-    "gender": "female",
-    "brand": "Jack Jones",
-    "size": "xl",
-    "category":"tshirts",
-    "images":["https://wallpaperaccess.com/full/82955.jpg","https://storage.sg.content-cdn.io/cdn-cgi/image/%7Bwidth%7D,%7Bheight%7D,quality=60,format=auto,fit=cover,g=top/in-resources/22a79ec5-e694-4d7a-ac5a-85c8fa45b7f1/Images/ProductImages/Source/ITMTR00385Light%20Grey%20(2).jpg","https://storage.sg.content-cdn.io/cdn-cgi/image/%7Bwidth%7D,%7Bheight%7D,quality=60,format=auto,fit=cover,g=top/in-resources/22a79ec5-e694-4d7a-ac5a-85c8fa45b7f1/Images/ProductImages/Source/ITMTR00385Light%20Grey%20(4).jpg"]
- },
- {"user":"5c8a211f2f8fb814b56fa188",
-    "title": "shirtdsdsd xyz",
-    "description": "Random desc",
-    "price": "15",
-    "color": "Red",
-    "sold":"3",
-    "gender": "female",
-    "brand": "Jack and Jones",
-    "size": "xl",
-    "category":"trousers",
-    "images":["https://wallpaperaccess.com/full/82955.jpg","https://storage.sg.content-cdn.io/cdn-cgi/image/%7Bwidth%7D,%7Bheight%7D,quality=60,format=auto,fit=cover,g=top/in-resources/22a79ec5-e694-4d7a-ac5a-85c8fa45b7f1/Images/ProductImages/Source/ITMTR00385Light%20Grey%20(2).jpg","https://storage.sg.content-cdn.io/cdn-cgi/image/%7Bwidth%7D,%7Bheight%7D,quality=60,format=auto,fit=cover,g=top/in-resources/22a79ec5-e694-4d7a-ac5a-85c8fa45b7f1/Images/ProductImages/Source/ITMTR00385Light%20Grey%20(4).jpg"]
- }
+[
+   {
+      "user": "5c8a211f2f8fb814b56fa188",
+      "_id": "60abf0061f496d36af8d85a7",
+      "sold": "2",
+      "title": "shirt men",
+      "description": "Random desc",
+      "price": "10",
+      "color": "Blue",
+      "gender": "male",
+      "brand": "gucci",
+      "s": "11",
+      "xl": "12",
+      "category": "trousers",
+      "images": [
+         "https://wallpaperaccess.com/full/82955.jpg",
+         "https://storage.sg.content-cdn.io/cdn-cgi/image/%7Bwidth%7D,%7Bheight%7D,quality=60,format=auto,fit=cover,g=top/in-resources/22a79ec5-e694-4d7a-ac5a-85c8fa45b7f1/Images/ProductImages/Source/ITMTR00385Light%20Grey%20(2).jpg",
+         "https://storage.sg.content-cdn.io/cdn-cgi/image/%7Bwidth%7D,%7Bheight%7D,quality=60,format=auto,fit=cover,g=top/in-resources/22a79ec5-e694-4d7a-ac5a-85c8fa45b7f1/Images/ProductImages/Source/ITMTR00385Light%20Grey%20(4).jpg"
+      ]
+   },
+   {
+      "user": "5c8a211f2f8fb814b56fa188",
+      "_id": "60abf0061f496d36af8d85a6",
+      "title": "shirt abc",
+      "description": "Random desc",
+      "sold": "3",
+      "price": "12",
+      "color": "Green",
+      "gender": "female",
+      "brand": "Jack",
+      "s": "8",
+      "xl": "10",
+      "category": "tshirts",
+      "images": [
+         "https://wallpaperaccess.com/full/82955.jpg",
+         "https://storage.sg.content-cdn.io/cdn-cgi/image/%7Bwidth%7D,%7Bheight%7D,quality=60,format=auto,fit=cover,g=top/in-resources/22a79ec5-e694-4d7a-ac5a-85c8fa45b7f1/Images/ProductImages/Source/ITMTR00385Light%20Grey%20(2).jpg",
+         "https://storage.sg.content-cdn.io/cdn-cgi/image/%7Bwidth%7D,%7Bheight%7D,quality=60,format=auto,fit=cover,g=top/in-resources/22a79ec5-e694-4d7a-ac5a-85c8fa45b7f1/Images/ProductImages/Source/ITMTR00385Light%20Grey%20(4).jpg"
+      ]
+   },
+   {
+      "user": "5c8a211f2f8fb814b56fa188",
+      "title": "sadasdsa xyz",
+      "description": "Random desc",
+      "price": "10",
+      "sold": "10",
+      "color": "Blue",
+      "gender": "female",
+      "brand": "Jack Jones",
+      "l": "3",
+      "m": "4",
+      "category": "tshirts",
+      "images": [
+         "https://wallpaperaccess.com/full/82955.jpg",
+         "https://storage.sg.content-cdn.io/cdn-cgi/image/%7Bwidth%7D,%7Bheight%7D,quality=60,format=auto,fit=cover,g=top/in-resources/22a79ec5-e694-4d7a-ac5a-85c8fa45b7f1/Images/ProductImages/Source/ITMTR00385Light%20Grey%20(2).jpg",
+         "https://storage.sg.content-cdn.io/cdn-cgi/image/%7Bwidth%7D,%7Bheight%7D,quality=60,format=auto,fit=cover,g=top/in-resources/22a79ec5-e694-4d7a-ac5a-85c8fa45b7f1/Images/ProductImages/Source/ITMTR00385Light%20Grey%20(4).jpg"
+      ]
+   },
+   {
+      "user": "5c8a211f2f8fb814b56fa188",
+      "title": "shirtdsdsd xyz",
+      "description": "Random desc",
+      "price": "15",
+      "color": "Red",
+      "sold": "3",
+      "l": "3",
+      "m": "4",
+      "gender": "female",
+      "brand": "Jack and Jones",
+      "category": "trousers",
+      "images": [
+         "https://wallpaperaccess.com/full/82955.jpg",
+         "https://storage.sg.content-cdn.io/cdn-cgi/image/%7Bwidth%7D,%7Bheight%7D,quality=60,format=auto,fit=cover,g=top/in-resources/22a79ec5-e694-4d7a-ac5a-85c8fa45b7f1/Images/ProductImages/Source/ITMTR00385Light%20Grey%20(2).jpg",
+         "https://storage.sg.content-cdn.io/cdn-cgi/image/%7Bwidth%7D,%7Bheight%7D,quality=60,format=auto,fit=cover,g=top/in-resources/22a79ec5-e694-4d7a-ac5a-85c8fa45b7f1/Images/ProductImages/Source/ITMTR00385Light%20Grey%20(4).jpg"
+      ]
+   }
 ]

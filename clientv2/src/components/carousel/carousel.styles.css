@@ -66,6 +66,12 @@
   min-width: 33.33%;
   height: 40vh;
 }
+.productCarousel.title {
+  color: var(--neutral-300);
+  letter-spacing: 0.8px;
+  text-transform: capitalize;
+  margin: 1rem;
+}
 
 .testimonial .carousel__slide {
   min-width: 100%;

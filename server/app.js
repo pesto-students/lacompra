@@ -10,7 +10,8 @@ const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 
 const app = express();
-app.use(cors())
+
+app.use(cors({ origin: true, credentials: true }));
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
@@ -27,6 +28,7 @@ app.use((req, res, next) => {
 
 
 
+app.options('*', cors()) // include before other routes 
 
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/products', productRoutes)

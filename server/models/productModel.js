@@ -54,10 +54,21 @@ const productSchema = new mongoose.Schema(
       enum: ["male", "female"],
       required: [true, 'gender is required'],
     },
-    size: {
-      type: String,
-      enum: ['s', 'm', 'l', 'xl'],
-      required: [true, 'size is required'],
+    l: {
+      type: Number,
+      default: 0,
+    },
+    s: {
+      type: Number,
+      default: 0,
+    },
+    xl: {
+      type: Number,
+      default: 0,
+    },
+    m: {
+      type: Number,
+      default: 0,
     },
     brand: {
       type: String,
