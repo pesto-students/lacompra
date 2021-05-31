@@ -4,12 +4,9 @@ import { getWishlist } from "./wishlistSlice";
 import "./wishlist.styles.scss";
 const Wishlist = () => {
   const dispatch = useDispatch();
-  const { error, loading, wishlistItems } = useSelector(
-    (state) => state.wishlist
-  );
+  const { loading, wishlistItems } = useSelector((state) => state.wishlist);
 
   useEffect(() => {
-    console.log("hereaaaa");
     dispatch(getWishlist());
     // eslint-disable-next-line
   }, []);
@@ -19,7 +16,7 @@ const Wishlist = () => {
       <h1>wishlist</h1>
       {!wishlistItems.length && <p className="text_empty">Wishlist is empty</p>}
       {wishlistItems.map((item) => (
-        <div className="product">
+        <div className="product" key={item.id}>
           <img src={item.images[0]} alt={item.title} />
           <h4>{item.title}</h4>
 

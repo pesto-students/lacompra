@@ -18,6 +18,7 @@
     background-color: var(--neutral-100);
     padding: 32px 16px;
     box-sizing: border-box;
+    overflow-y: auto;
     transition: transform 0.1s linear;
     &_close {
       position: absolute;

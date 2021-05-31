@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { sidedrawerClose } from "./sidedrawerSlice";
 import { AiOutlineClose } from "react-icons/ai";
@@ -15,7 +16,13 @@ const Sidedrawer = () => {
       dispatch(sidedrawerClose());
     }
   };
+  useEffect(() => {
+    if (status === "open") {
+      document.body.style.overflowY = "hidden";
+    }
 
+    return () => (document.body.style.overflowY = "auto");
+  }, [status]);
   const showComponent = (component) => {
     switch (component) {
       case "wishlist":
