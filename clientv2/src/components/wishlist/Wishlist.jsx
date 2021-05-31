@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getWishlist } from "./wishlistSlice";
+import { getWishlist, deleteFromWishlist } from "./wishlistSlice";
 import "./wishlist.styles.scss";
 const Wishlist = () => {
   const dispatch = useDispatch();
@@ -22,7 +22,9 @@ const Wishlist = () => {
 
           <div className="btn">
             <button className="btn_cart">move to cart</button>
-            <button>remove</button>
+            <button onClick={() => dispatch(deleteFromWishlist(item.id))}>
+              remove
+            </button>
           </div>
         </div>
       ))}

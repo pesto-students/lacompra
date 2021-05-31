@@ -17,6 +17,23 @@ export const addToWishlist = createAsyncThunk(
     return await response.json();
   }
 );
+export const deleteFromWishlist = createAsyncThunk(
+  "wishlist/deleteFromWishlist",
+  async (data) => {
+    const response = await fetch(`${backendDomain}/api/v1/users/wishlist`, {
+      method: "DELETE",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        product: data,
+      }),
+    });
+    return await response.json();
+  }
+);
+
 export const getWishlist = createAsyncThunk(
   "wishlist/getWishlist",
   async () => {
@@ -36,16 +53,8 @@ const wishlistSlice = createSlice({
     wishlistItems: [],
     errors: "",
     loading: "idle",
-    // status: "close",
   },
-  reducers: {
-    // wishlistOpen: (state) => {
-    //   state.status = "open";
-    // },
-    // wishlistClose: (state) => {
-    //   state.status = "close";
-    // },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     // addToWishlist.pending === "wishlist/addToWishlist/pending";
     builder.addCase(addToWishlist.pending, (state) => {
@@ -67,6 +76,17 @@ const wishlistSlice = createSlice({
       state.loading = "loaded";
     });
     builder.addCase(getWishlist.rejected, (state, action) => {
+      state.loading = "error";
+      state.error = action.error.message;
+    });
+    builder.addCase(deleteFromWishlist.pending, (state) => {
+      state.loading = "loading";
+    });
+    builder.addCase(deleteFromWishlist.fulfilled, (state, { payload }) => {
+      state.wishlistItems = payload.data.wishlist;
+      state.loading = "loaded";
+    });
+    builder.addCase(deleteFromWishlist.rejected, (state, action) => {
       state.loading = "error";
       state.error = action.error.message;
     });
