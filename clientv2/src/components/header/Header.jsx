@@ -1,8 +1,6 @@
 import { useDispatch } from "react-redux";
 import { sidedrawerOpen } from "../sidedrawer/sidedrawerSlice";
-
 import Search from "../search/Search";
-
 import "./header.styles.scss";
 const Header = () => {
   const dispatch = useDispatch();
@@ -11,6 +9,9 @@ const Header = () => {
   };
   const handleWishlistClick = () => {
     dispatch(sidedrawerOpen("wishlist"));
+  };
+  const handleCartClick = () => {
+    dispatch(sidedrawerOpen("cart"));
   };
   return (
     <header className="header">
@@ -26,7 +27,7 @@ const Header = () => {
           <li>
             <a href="#about">Categories</a>
           </li>
-          <li>
+          <li onClick={handleCartClick}>
             <a href="#cart">cart</a>
           </li>
           <li onClick={handleWishlistClick}>

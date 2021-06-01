@@ -9,6 +9,7 @@ import "./carousel.styles.css";
 
 const Carousel = ({ config, slides }) => {
   const dispatch = useDispatch();
+  // const { wishlistItems } = useSelector((state) => state.wishlist);
 
   const [viewportRef, carousel] = useCarousel(config?.viewportConfig);
   const Image = ({ src, componentName, children }) => {
@@ -50,13 +51,14 @@ const Carousel = ({ config, slides }) => {
                               View Product
                             </button>
                             <button
-                              onClick={() =>
-                                dispatch(
-                                  addToWishlist("60abf0061f496d36af8d85a6")
-                                )
-                              }
+                              onClick={() => dispatch(addToWishlist(slide._id))}
                               className="productCarousel carousel__cta"
                             >
+                              {/* {!!wishlistItems.find(
+                                (wishlistItem) => wishlistItem._id === slide._id
+                              )
+                                ? "Remove"
+                                : "Add to wishlist"} */}
                               Add to wishlist
                             </button>
                             <h4 className={`${config.key} title`}>

@@ -69,12 +69,15 @@ exports.userCart = catchAysnc(async (req, res) => {
   for (let i = 0; i < cart.length; i++) {
     let object = {};
 
-    object.product = cart[i].product;
+    // object.product = cart[i].product;
     object.count = cart[i].count;
     // get price for creating total
-    let productFromDb = await Product.findById(object.product);
-
-    object.price = productFromDb.price * object.count;
+    let { images, title, _id, price } = await Product.findById(cart[i].product);
+    // console.log('productFromDb: ', productFromDb);
+    object.product = {
+      images, title, id: _id
+    }
+    object.price = price * object.count;
     products.push(object);
   }
   let cartTotal = 0;
@@ -95,8 +98,8 @@ exports.userCart = catchAysnc(async (req, res) => {
 });
 
 exports.getUserCart = catchAysnc(async (req, res) => {
-  let cart = await Cart.findOne({ orderdBy: req.user._id }).populate("products.product", "_id title price");
-
+  // let cart = await Cart.findOne({ orderdBy: req.user._id }).populate("products.product", "_id title price images");
+  let cart = await Cart.findOne({ orderdBy: req.user._id })
   const { products, cartTotal } = cart;
   res.status(200).json({
     status: 'success',

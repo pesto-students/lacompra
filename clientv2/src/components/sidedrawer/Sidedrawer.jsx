@@ -5,6 +5,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import "./sidedrawer.styles.scss";
 
 import Wishlist from "../wishlist/Wishlist";
+import Cart from "../cart/Cart";
 
 const Sidedrawer = () => {
   const dispatch = useDispatch();
@@ -27,8 +28,8 @@ const Sidedrawer = () => {
     switch (component) {
       case "wishlist":
         return <Wishlist />;
-      // case "cart":
-      //   return <Cart />;
+      case "cart":
+        return <Cart />;
       // case "hamburger":
       //   return <Hamburger />;
       // case "filters":
