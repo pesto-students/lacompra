@@ -36,4 +36,18 @@
     cursor: pointer;
     letter-spacing: 1px;
   }
+  .warning {
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    color: var(--neutral-500);
+  }
+  select {
+    padding: 4px 4px;
+    background-color: var(--neutral-100);
+    color: var(--neutral-700);
+    border: 1px solid var(--neutral-500);
+    margin: 0px 4px;
+    border-radius: 4px;
+  }
 }

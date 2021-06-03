@@ -13,9 +13,21 @@ const cartSchema = new mongoose.Schema(
           },
           images: [String],
           title: String,
-
+          size: {
+            type: String,
+            enum: ['xl', 's', 'l', 'm']
+          },
+          count: Number,
+          warning: {
+            type: String,
+            default: ""
+          },
+          outOfStock: {
+            type: Boolean,
+            required: true,
+            default: false
+          }
         },
-        count: Number,
         price: Number,
       },
     ],

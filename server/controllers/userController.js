@@ -58,28 +58,32 @@ exports.userCart = catchAysnc(async (req, res) => {
   const user = req.user;
   // check if cart with logged in user id already exist
   let cartExistByThisUser = await Cart.findOne({ orderdBy: user._id }).exec();
-  console.log('cartExistByThisUser: ', cartExistByThisUser);
 
 
   if (cartExistByThisUser) {
     cartExistByThisUser.remove();
-    console.log("removed old cart");
   }
 
   for (let i = 0; i < cart.length; i++) {
     let object = {};
 
-    // object.product = cart[i].product;
-    object.count = cart[i].count;
-    // get price for creating total
-    let { images, title, _id, price } = await Product.findById(cart[i].product);
-    // console.log('productFromDb: ', productFromDb);
+    let items = await Product.findById(cart[i].product, `images title _id price ${cart[i].size}`);
+
     object.product = {
-      images, title, id: _id
+      images: items.images, title: items.title, id: items._id, size: cart[i].size, count: cart[i].count
     }
-    object.price = price * object.count;
+    if (items[cart[i].size] == 0) {
+      object.product.warning = "Out of stock";
+      object.product.outOfStock = true;
+      object.product.count = 0;
+    } else if (object.product.count > items[cart[i].size]) {
+      object.product.warning = "This product is adjusted to maximum quantity available";
+      object.product.count = items[cart[i].size];
+    }
+    object.price = items.price * object.product.count;
     products.push(object);
   }
+
   let cartTotal = 0;
 
   for (let i = 0; i < products.length; i++) {
