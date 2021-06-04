@@ -1,0 +1,24 @@
+.filtered {
+  width: 90%;
+  margin: 0 auto;
+  min-height: 90vh;
+  &_header {
+    display: flex;
+    justify-content: space-between;
+  }
+  &_cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  &_card {
+    border: 1px solid red;
+    flex: 0 1 32%;
+    @media screen and (max-width: 768px) {
+      flex: 0 1 48%;
+    }
+    @media screen and (max-width: 568px) {
+      flex: 0 1 100%;
+    }
+  }
+}

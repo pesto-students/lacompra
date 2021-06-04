@@ -63,3 +63,4 @@ export default Wishlist;
 
 //TODO
 //1) FIX: if user cart is not fetched; it is treated as empty and simply gets replaced by whatever is added by wishlist in it.
+//2) add a check for login

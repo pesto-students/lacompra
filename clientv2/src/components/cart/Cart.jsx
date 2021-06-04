@@ -120,3 +120,6 @@ const Cart = () => {
 };
 export default Cart;
 // onClick={() => dispatch(deleteFromCart(item.id))}
+
+//TODO
+//2) add a check for login

@@ -6,6 +6,7 @@ import "./sidedrawer.styles.scss";
 
 import Wishlist from "../wishlist/Wishlist";
 import Cart from "../cart/Cart";
+import Filtered from "../filterSidedrawer/FilterSidedrawer";
 
 const Sidedrawer = () => {
   const dispatch = useDispatch();
@@ -32,8 +33,8 @@ const Sidedrawer = () => {
         return <Cart />;
       // case "hamburger":
       //   return <Hamburger />;
-      // case "filters":
-      //   return <Filter />;
+      case "filter":
+        return <Filtered />;
       default:
         return "";
     }
