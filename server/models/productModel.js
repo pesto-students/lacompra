@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const slugify = require('slugify');
+// const slugify = require('slugify');
 
 const productSchema = new mongoose.Schema(
   {
@@ -15,10 +15,10 @@ const productSchema = new mongoose.Schema(
       maxlength: 32,
       text: true,
     },
-    slug: {
-      type: String,
-      unique: true,
-    },
+    // slug: {
+    //   type: String,
+    //   unique: true,
+    // },
     description: {
       type: String,
       required: true,
@@ -99,9 +99,9 @@ const productSchema = new mongoose.Schema(
     },
   }
 );
-productSchema.pre('save', function (next) {
-  this.slug = slugify(this.title, { lower: true });
-  next();
-});
+// productSchema.pre('save', function (next) {
+//   this.slug = slugify(this.title, { lower: true });
+//   next();
+// });
 
 module.exports = mongoose.model("Product", productSchema);
