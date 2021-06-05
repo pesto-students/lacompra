@@ -70,17 +70,22 @@ exports.getAll = (Model, populateOptions) =>
       .filter()
       .sort()
       .limitFields()
-      .paginate();
+      .paginate(Model);
 
     if (populateOptions)
       features.query = features.query.populate(populateOptions);
 
     const doc = await features.query;
+    const totalDoc = await features.totalDocQuery;
 
+    if (req.query.page && page > 1) {
+      if (!doc.length) return next(new AppError('This page does not exist', 404));
+    }
     // SEND RESPOND
     res.status(200).json({
       status: 'success',
       results: doc.length,
+      allResults: totalDoc,
       data: doc,
     });
   });
