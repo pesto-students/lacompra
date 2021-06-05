@@ -24,15 +24,32 @@ const Filtered = () => {
   return (
     <section className="filtered">
       <div className="filtered_header">
-        <span onClick={handleFilterClick}>filter/sort</span>
+        <a className="filtered_option" onClick={handleFilterClick}>
+          filter / sort
+        </a>
         <span>Total {allResults} products found</span>
       </div>
       <div className="filtered_cards">
         {filteredProducts.map((product) => (
-          <div className="filtered_card" key={product.id}>
-            <div>brand: {product.brand}</div>
-            <div>title: {product.title}</div>
-            <div>description: {product.description}</div>
+          <div
+            className="filtered_card"
+            key={product.id}
+            style={{
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), transparent),url(${product.images[0]})`,
+            }}
+          >
+            <button className="productCarousel carousel__cta">
+              View Product
+            </button>
+            <button
+              // onClick={() => dispatch(addToWishlist(slide._id))}
+              className="productCarousel carousel__cta"
+            >
+              Add to wishlist
+            </button>
+            <h5 className="filtered_title">
+              {product.title} by <span>{product.brand}</span>
+            </h5>
           </div>
         ))}
       </div>

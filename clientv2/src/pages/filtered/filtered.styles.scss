@@ -5,6 +5,18 @@
   &_header {
     display: flex;
     justify-content: space-between;
+    min-height: 4vh;
+    align-items: center;
+    position: sticky;
+    top: 4.5vh;
+    z-index: 3;
+    background: var(--neutral-200);
+  }
+  &_option {
+    font-size: var(--header5);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
   }
   &_cards {
     display: flex;
@@ -12,13 +24,41 @@
     justify-content: space-between;
   }
   &_card {
-    border: 1px solid red;
     flex: 0 1 32%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    filter: grayscale(0);
+
+    &:hover {
+      opacity: 0.8;
+      filter: grayscale(1);
+
+      .productCarousel.carousel__cta {
+        display: flex;
+      }
+    }
     @media screen and (max-width: 768px) {
       flex: 0 1 48%;
     }
     @media screen and (max-width: 568px) {
       flex: 0 1 100%;
+    }
+  }
+  &_title {
+    color: var(--neutral-200);
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin: 1rem auto;
+    span {
+      font-style: italic;
     }
   }
 }

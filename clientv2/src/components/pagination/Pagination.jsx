@@ -49,7 +49,7 @@ const Pagination = () => {
     <div className="flex-container">
       <div>
         {" "}
-        currentPage :{" "}
+        current page :{" "}
         {currentPage > maxPages
           ? maxPages && setCurrentPage(maxPages)
           : currentPage}{" "}
