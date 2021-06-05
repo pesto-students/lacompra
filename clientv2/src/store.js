@@ -7,6 +7,8 @@ import sidedrawerSlice from './components/sidedrawer/sidedrawerSlice';
 import wishlistSlice from './components/wishlist/wishlistSlice';
 import cartSlice from './components/cart/cartSlice';
 import rangeSlice from './components/range/rangeSlice';
+import filterSidedrawerSlice from './components/filterSidedrawer/filterSidedrawerSlice';
+
 
 
 
@@ -18,6 +20,7 @@ export default configureStore({
     wishlist: wishlistSlice.reducer,
     cart: cartSlice.reducer,
     filteredProducts: filteredProductsSlice.reducer,
-    rangeValue: rangeSlice.reducer
+    rangeValue: rangeSlice.reducer,
+    filterSidedrawer: filterSidedrawerSlice
   },
 })
