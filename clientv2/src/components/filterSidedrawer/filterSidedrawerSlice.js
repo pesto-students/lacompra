@@ -10,9 +10,15 @@ const generateQuery = (queryObj) => {
 }
 export const fetchfilteredProducts = createAsyncThunk(
   'filteredSidedrawer/fetchfilteredProducts',
-  async (data) => {
-    const response = await fetch(`${backendDomain}/api/v1/products${generateQuery(data)}`);
-    return await response.json();
+  async (data, { getState }) => {
+    const finalQuery = { ...getState().filterSidedrawer.queryObj, ...data }
+    const response = await fetch(`${backendDomain}/api/v1/products${generateQuery(finalQuery)}`);
+    const fetchedData = await response.json();
+    const queryObj = finalQuery;
+    return {
+      fetchedData,
+      queryObj
+    }
   }
 )
 
@@ -20,10 +26,13 @@ const filterSidedrawerSlice = createSlice({
   name: 'filteredSidedrawer',
   initialState: {
     filteredProducts: [],
+    queryObj: {},
+    allResults: 0,
     loading: "idle",
     error: "",
   },
-  reducers: {},
+  reducers: {
+  },
   extraReducers: (builder) => {
     //fetchfilteredProducts.pending === 'filteredProducts/fetchfilteredProducts/pending'
     builder.addCase(fetchfilteredProducts.pending, (state) => {
@@ -31,7 +40,9 @@ const filterSidedrawerSlice = createSlice({
     });
     builder.addCase(
       fetchfilteredProducts.fulfilled, (state, { payload }) => {
-        state.filteredProducts = payload.data;
+        state.filteredProducts = payload.fetchedData.data;
+        state.queryObj = payload.queryObj;
+        state.allResults = payload.fetchedData.allResults;
         state.loading = "loaded";
       });
     builder.addCase(

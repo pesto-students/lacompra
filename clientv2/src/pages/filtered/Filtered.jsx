@@ -1,17 +1,19 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchfilteredProducts } from "./filteredSlice";
 import { sidedrawerOpen } from "../../components/sidedrawer/sidedrawerSlice";
+import Pagination from "../../components/pagination/Pagination";
 import "./filtered.styles.scss";
 
 const Filtered = () => {
   const dispatch = useDispatch();
-  const { filteredProducts } = useSelector((state) => state.filteredProducts);
+  const { filteredProducts, allResults } = useSelector(
+    (state) => state.filterSidedrawer
+  );
 
-  useEffect(() => {
-    dispatch(fetchfilteredProducts());
-    // eslint-disable-next-line
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchfilteredProducts());
+  //   // eslint-disable-next-line
+  // }, []);
 
   // useEffect(() => {
   //   console.log(filteredProducts);
@@ -23,7 +25,7 @@ const Filtered = () => {
     <section className="filtered">
       <div className="filtered_header">
         <span onClick={handleFilterClick}>filter/sort</span>
-        <span>Total {filteredProducts.length} products found</span>
+        <span>Total {allResults} products found</span>
       </div>
       <div className="filtered_cards">
         {filteredProducts.map((product) => (
@@ -34,6 +36,7 @@ const Filtered = () => {
           </div>
         ))}
       </div>
+      <Pagination />
     </section>
   );
 };

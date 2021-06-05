@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
 import productReducer from './pages/homepage/homepageSlice';
-import filteredProductsSlice from './pages/filtered/filteredSlice';
 
 import topProductsSlice from './components/productCarousel/productCarouselSlice';
 import sidedrawerSlice from './components/sidedrawer/sidedrawerSlice';
@@ -19,8 +18,7 @@ export default configureStore({
     sidedrawer: sidedrawerSlice.reducer,
     wishlist: wishlistSlice.reducer,
     cart: cartSlice.reducer,
-    filteredProducts: filteredProductsSlice.reducer,
     rangeValue: rangeSlice.reducer,
-    filterSidedrawer: filterSidedrawerSlice
+    filterSidedrawer: filterSidedrawerSlice.reducer
   },
 })

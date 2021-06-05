@@ -10,8 +10,9 @@ const FilterSidedrawer = () => {
   const [queryObj, setQueryObj] = useState({});
 
   useEffect(() => {
-    console.log("queryObj: ", queryObj);
-    dispatch(fetchfilteredProducts(queryObj));
+    if (Object.keys(queryObj).length) {
+      dispatch(fetchfilteredProducts(queryObj));
+    }
 
     // eslint-disable-next-line
   }, [queryObj]);

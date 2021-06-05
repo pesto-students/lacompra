@@ -78,9 +78,9 @@ exports.getAll = (Model, populateOptions) =>
     const doc = await features.query;
     const totalDoc = await features.totalDocQuery;
 
-    if (req.query.page && page > 1) {
-      if (!doc.length) return next(new AppError('This page does not exist', 404));
-    }
+    // if (req.query.page && page > 1) {
+    //   if (!doc.length) return next(new AppError('This page does not exist', 404));
+    // }
     // SEND RESPOND
     res.status(200).json({
       status: 'success',
