@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { AiOutlineClose } from "react-icons/ai";
 import { loginUser, modalClose } from "./modalSlice";
+
 // import Search from "../search/Search";
 import "./modal.styles.scss";
 const Modal = () => {
@@ -26,7 +28,7 @@ const Modal = () => {
       <div className="modal__content">
         <h1 className="modal__title">Login</h1>
         <span onClick={closeModal} className="modal__close">
-          Close
+          <AiOutlineClose />
         </span>
         <div className="login-page">
           <div className="form">
