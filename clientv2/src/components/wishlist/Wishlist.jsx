@@ -2,16 +2,16 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getWishlist, deleteFromWishlist } from "./wishlistSlice";
 import { addToCart } from "../cart/cartSlice";
-
+// import { isLoggedIn } from "../modal/modalSlice";
 import "./wishlist.styles.scss";
 const Wishlist = () => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
-
   const { loading, wishlistItems } = useSelector((state) => state.wishlist);
+  const { isLoggedIn } = useSelector((state) => state.modal);
 
   useEffect(() => {
-    dispatch(getWishlist());
+    if (isLoggedIn) dispatch(getWishlist());
     // eslint-disable-next-line
   }, []);
   const handleMoveToCart = (item) => {
@@ -36,6 +36,7 @@ const Wishlist = () => {
     dispatch(addToCart(cartItemsTransformed));
     dispatch(deleteFromWishlist(item.id));
   };
+  if (!isLoggedIn) return <p className="text_empty">Please login</p>;
   if (loading === "loading") return <div>...loading</div>;
   return (
     <section className="wishlist">

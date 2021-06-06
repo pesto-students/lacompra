@@ -1,6 +1,8 @@
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { sidedrawerOpen } from "../sidedrawer/sidedrawerSlice";
 import Search from "../search/Search";
+import { modalOpen } from "../modal/modalSlice";
 import "./header.styles.scss";
 const Header = () => {
   const dispatch = useDispatch();
@@ -16,7 +18,11 @@ const Header = () => {
   return (
     <header className="header">
       <nav>
-        <h1 id="logo">La Compra</h1>
+        <Link to="/">
+          {" "}
+          <h1 id="logo">La Compra</h1>
+        </Link>
+
         <Search />
         <button className="hamburger-button" onClick={handleClickHamburger}>
           <div className="hamburger-button__line" />
@@ -25,16 +31,16 @@ const Header = () => {
         </button>
         <ul>
           <li>
-            <a href="#about">Categories</a>
+            <a href="#">Categories</a>
           </li>
           <li onClick={handleCartClick}>
-            <a href="#cart">cart</a>
+            <a href="#">cart</a>
           </li>
           <li onClick={handleWishlistClick}>
-            <a href="#cart">wishlist</a>
+            <a href="#">wishlist</a>
           </li>
-          <li>
-            <a href="#cart">login</a>
+          <li onClick={() => dispatch(modalOpen())}>
+            <a href="#">login</a>
           </li>
         </ul>
       </nav>

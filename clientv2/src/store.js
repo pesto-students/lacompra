@@ -8,6 +8,7 @@ import cartSlice from './components/cart/cartSlice';
 import rangeSlice from './components/range/rangeSlice';
 import filterSidedrawerSlice from './components/filterSidedrawer/filterSidedrawerSlice';
 import starSlice from './components/star/starSlice';
+import modalSlice from './components/modal/modalSlice'
 
 export default configureStore({
   reducer: {
@@ -18,6 +19,7 @@ export default configureStore({
     cart: cartSlice.reducer,
     rangeValue: rangeSlice.reducer,
     filterSidedrawer: filterSidedrawerSlice.reducer,
-    star: starSlice.reducer
+    star: starSlice.reducer,
+    modal: modalSlice.reducer,
   },
 })

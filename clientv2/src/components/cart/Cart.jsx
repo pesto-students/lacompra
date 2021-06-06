@@ -6,9 +6,11 @@ import "./cart.styles.scss";
 const Cart = () => {
   const dispatch = useDispatch();
   const { loading, cartItems } = useSelector((state) => state.cart);
+  const { isLoggedIn } = useSelector((state) => state.modal);
 
   useEffect(() => {
-    dispatch(getCartItems());
+    if (isLoggedIn) dispatch(getCartItems());
+
     // eslint-disable-next-line
   }, []);
 
@@ -71,6 +73,7 @@ const Cart = () => {
     }
     return options;
   };
+  if (!isLoggedIn) return <p className="text_empty">Please login</p>;
   if (loading === "loading") return <div>...loading</div>;
 
   return (

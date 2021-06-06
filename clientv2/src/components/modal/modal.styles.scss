@@ -1,0 +1,117 @@
+.modal {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 12;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding-top: 4rem;
+  &__content {
+    width: 40vw;
+    min-height: 60vh;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    margin: 0 auto;
+    background-color: var(--neutral-200);
+    display: flex;
+    flex-direction: column;
+  }
+  &__title {
+    text-align: center;
+    letter-spacing: 1px;
+    color: var(--neutral-700);
+  }
+  &__close {
+    position: absolute;
+    right: 4px;
+    top: 8px;
+    cursor: pointer;
+    color: var(--neutral-500);
+    text-transform: uppercase;
+    font-size: var(--paragraph);
+    letter-spacing: 0.5px;
+  }
+  .login-page {
+    margin: auto;
+    width: 95%;
+  }
+  .form {
+    margin: 0 auto;
+    text-align: center;
+  }
+  .form input {
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  .form button {
+    text-transform: uppercase;
+    outline: 0;
+    background: var(--neutral-500);
+    width: 60%;
+    border: 0;
+    padding: 12px;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: all 0.3 ease;
+    cursor: pointer;
+  }
+  .form button:hover,
+  .form button:active,
+  .form button:focus {
+    background: var(--neutral-800);
+  }
+  .form .message {
+    margin: 15px 0 0;
+    color: #b3b3b3;
+    font-size: 12px;
+  }
+  .form .message a {
+    color: var(--neutral-600);
+    text-decoration: none;
+  }
+  .form .register-form {
+    display: none;
+  }
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  .container:before,
+  .container:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .container .info {
+    margin: 50px auto;
+    text-align: center;
+  }
+  .container .info h1 {
+    margin: 0 0 15px;
+    padding: 0;
+    font-size: 36px;
+    font-weight: 300;
+    color: #1a1a1a;
+  }
+  .container .info span {
+    color: #4d4d4d;
+    font-size: 12px;
+  }
+  .container .info span a {
+    color: #000000;
+    text-decoration: none;
+  }
+  .container .info span .fa {
+    color: #ef3b3a;
+  }
+}
