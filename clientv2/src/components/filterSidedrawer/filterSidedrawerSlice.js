@@ -1,9 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import backendDomain from '../../utils/backend'
-
+// todo : fix multiple option undo bug
 const generateQuery = (queryObj) => {
   let queryStr = "?"
-  for (const [key, value] of Object.entries(queryObj)) {
+  for (let [key, value] of Object.entries(queryObj)) {
+    if (Array.isArray(value)) {
+      value = JSON.stringify(value)
+    }
     queryStr = queryStr + key + "=" + value + "&";
   }
   return queryStr
@@ -27,11 +30,34 @@ const filterSidedrawerSlice = createSlice({
   initialState: {
     filteredProducts: [],
     queryObj: {},
+    sortBy: {
+      latest: true,
+      "most popular": false,
+      oldest: false
+    },
+    brands: {
+      "Louis Philippe": false,
+      "Van Heusen": false,
+      "Allen Solly": false,
+      "Peter England": false,
+      "Park Avenue": false,
+      "Monte Carlo": false,
+      "Belmonte": false,
+      "Oxemberg": false,
+      "Provogue": false,
+      "Indian Terrain": false,
+    },
     allResults: 0,
     loading: "idle",
     error: "",
   },
   reducers: {
+    updateSortBy: (state, { payload }) => {
+      state.sortBy = payload;
+    },
+    updateBrands: (state, { payload }) => {
+      state.brands = payload
+    }
   },
   extraReducers: (builder) => {
     //fetchfilteredProducts.pending === 'filteredProducts/fetchfilteredProducts/pending'
@@ -52,4 +78,5 @@ const filterSidedrawerSlice = createSlice({
       });
   }
 });
+export const { updateSortBy, updateBrands } = filterSidedrawerSlice.actions
 export default filterSidedrawerSlice;

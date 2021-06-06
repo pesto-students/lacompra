@@ -1,7 +1,9 @@
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { sidedrawerOpen } from "../../components/sidedrawer/sidedrawerSlice";
 import Pagination from "../../components/pagination/Pagination";
+import { addToWishlist } from "../../components/wishlist/wishlistSlice";
+import { addToCart } from "../../components/cart/cartSlice";
+
 import "./filtered.styles.scss";
 
 const Filtered = () => {
@@ -9,18 +11,34 @@ const Filtered = () => {
   const { filteredProducts, allResults } = useSelector(
     (state) => state.filterSidedrawer
   );
+  const { cartItems } = useSelector((state) => state.cart);
 
-  // useEffect(() => {
-  //   dispatch(fetchfilteredProducts());
-  //   // eslint-disable-next-line
-  // }, []);
+  const handleAddToCart = (item) => {
+    const cartItemsTransformed = [];
+    cartItems.forEach((cartItem) => {
+      if (item.id !== cartItem.product.id) {
+        cartItemsTransformed.push({
+          product: cartItem.product.id,
+          count: cartItem.product.count,
+          size: cartItem.product.size,
+        });
+      }
+    });
+    const sizeAvailable = ["s", "m", "l", "xl"].find((size) => {
+      return item[size] > 0;
+    });
+    cartItemsTransformed.push({
+      product: item.id,
+      count: 1,
+      size: sizeAvailable,
+    });
+    dispatch(addToCart(cartItemsTransformed));
+  };
 
-  // useEffect(() => {
-  //   console.log(filteredProducts);
-  // }, [filteredProducts]);
   const handleFilterClick = () => {
     dispatch(sidedrawerOpen("filter"));
   };
+
   return (
     <section className="filtered">
       <div className="filtered_header">
@@ -38,11 +56,14 @@ const Filtered = () => {
               backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), transparent),url(${product.images[0]})`,
             }}
           >
-            <button className="productCarousel carousel__cta">
-              View Product
+            <button
+              className="productCarousel carousel__cta"
+              onClick={() => handleAddToCart(product)}
+            >
+              Add to cart
             </button>
             <button
-              // onClick={() => dispatch(addToWishlist(slide._id))}
+              onClick={() => dispatch(addToWishlist(product._id))}
               className="productCarousel carousel__cta"
             >
               Add to wishlist

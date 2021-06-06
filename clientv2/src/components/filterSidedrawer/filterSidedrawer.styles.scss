@@ -3,5 +3,32 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     border-bottom: 1px solid var(--neutral-300);
+    margin-bottom: 1rem;
+  }
+  h4 {
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    color: var(--neutral-800);
+    margin: 1rem auto;
+  }
+  &_brands {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  &_brand {
+    flex: 0 1 50%;
+    padding: 4px 0;
+    color: var(--neutral-400);
+    letter-spacing: 1px;
+    cursor: pointer;
+  }
+  &_sort {
+    display: flex;
+    justify-content: space-between;
+    text-transform: capitalize;
+  }
+  &_active {
+    color: var(--neutral-800);
   }
 }

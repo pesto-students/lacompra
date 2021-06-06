@@ -17,7 +17,6 @@ const Range = () => {
         display: "flex",
         justifyContent: "center",
         flexWrap: "wrap",
-        margin: "2rem auto",
       }}
     >
       <Slider

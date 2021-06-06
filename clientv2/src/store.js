@@ -7,9 +7,7 @@ import wishlistSlice from './components/wishlist/wishlistSlice';
 import cartSlice from './components/cart/cartSlice';
 import rangeSlice from './components/range/rangeSlice';
 import filterSidedrawerSlice from './components/filterSidedrawer/filterSidedrawerSlice';
-
-
-
+import starSlice from './components/star/starSlice';
 
 export default configureStore({
   reducer: {
@@ -19,6 +17,7 @@ export default configureStore({
     wishlist: wishlistSlice.reducer,
     cart: cartSlice.reducer,
     rangeValue: rangeSlice.reducer,
-    filterSidedrawer: filterSidedrawerSlice.reducer
+    filterSidedrawer: filterSidedrawerSlice.reducer,
+    star: starSlice.reducer
   },
 })

@@ -1,0 +1,32 @@
+.star-rating {
+  display: flex;
+  align-items: center;
+}
+.star {
+  cursor: pointer;
+  height: 16px;
+  width: 16px;
+  margin: 2px;
+  float: left;
+  background-color: var(--neutral-300);
+  -webkit-clip-path: polygon(
+    50% 0%,
+    63% 38%,
+    100% 38%,
+    69% 59%,
+    82% 100%,
+    50% 75%,
+    18% 100%,
+    31% 59%,
+    0% 38%,
+    37% 38%
+  );
+}
+.star.selected {
+  background-color: var(--neutral-600);
+}
+.star_reset {
+  margin-left: 1rem;
+  letter-spacing: 1px;
+  color: var(--neutral-500);
+}

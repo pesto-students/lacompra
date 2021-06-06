@@ -65,7 +65,11 @@ exports.getAll = (Model, populateOptions) =>
   catchAysnc(async (req, res, next) => {
     let filter = {};
     if (req.params.productId) filter = { product: req.params.productId };
-
+    Object.keys(req.query).forEach(key => {
+      if (typeof req.query[key].in === "string" && req.query[key].in.includes(`[`)) {
+        req.query[key].in = JSON.parse(req.query[key].in)
+      }
+    })
     const features = new ApiFeatures(Model.find(filter), req.query)
       .filter()
       .sort()

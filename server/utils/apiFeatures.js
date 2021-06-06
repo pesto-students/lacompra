@@ -13,10 +13,11 @@ class ApiFeature {
     excludeFields.forEach((field) => delete queryObj[field]);
 
     let queryStr = JSON.stringify(queryObj);
-    queryStr = queryStr.replace(/\b(gte|gt|lt|lte)\b/g, (match) => {
+    queryStr = queryStr.replace(/\b(gte|gt|lt|lte|in)\b/g, (match) => {
       return `$${match}`;
     });
     //BUILD QUERY
+
     this.query.find(JSON.parse(queryStr));
     //we are retur this so that we can chain other methods on it before final 'await'
     return this;
