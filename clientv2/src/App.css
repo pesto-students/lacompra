@@ -1,0 +1,13 @@
+.Toastify__toast--error {
+  background: var(--error);
+}
+.Toastify__toast--success {
+  background: var(--success);
+}
+.Toastify__toast-body {
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+}
+.Toastify__toast {
+  min-height: 2rem;
+}

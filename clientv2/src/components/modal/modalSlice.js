@@ -1,18 +1,30 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import backendDomain from '../../utils/backend'
 
 export const loginUser = createAsyncThunk(
   "modal/loginUser",
-  async (data) => {
-    const response = await fetch(`${backendDomain}/api/v1/users/login`, {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    return await response.json();
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await fetch(`${backendDomain}/api/v1/users/login`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const res = await response.json();
+      if (res.status === "fail") {
+        throw new Error(res.message)
+      }
+      toast.success(`Welcome, ${res.data.user.name}`);
+      return res;
+    } catch (err) {
+      toast.error(err.message);
+      return rejectWithValue(err.message)
+    }
   }
 );
 
@@ -46,10 +58,10 @@ const modalSlice = createSlice({
         state.loading = "loaded";
       });
     builder.addCase(
-      loginUser.rejected, (state, action) => {
+      loginUser.rejected, (state, { payload }) => {
         state.loading = "error";
         state.isLoggedIn = false;
-        state.error = action.error.message;
+        state.error = payload;
       });
   }
 });

@@ -11,7 +11,7 @@ const Modal = () => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
 
-  const { isLoggedIn, modalState } = useSelector((state) => state.modal);
+  const { isLoggedIn, modalState, error } = useSelector((state) => state.modal);
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(loginUser({ email, password, username }));
@@ -30,6 +30,7 @@ const Modal = () => {
         <span onClick={closeModal} className="modal__close">
           <AiOutlineClose />
         </span>
+        <p className="modal__error">{error}</p>
         <div className="login-page">
           <div className="form">
             <form className="register-form">

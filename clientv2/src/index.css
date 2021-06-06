@@ -1,16 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
 :root {
   /* Colors */
-  /* --blue-900: #1e3a8a;
-  --blue-800: #1e40af;
-  --blue-700: #1d4ed8;
-  --blue-600: #2563eb;
-  --blue-500: #3b82f6;
-  --blue-400: #60a5fa;
-  --blue-300: #93c5fd;
-  --blue-200: #bfdbfe;
-  --blue-100: #dbeafe;
-  --blue-50: #eff6ff; */
   --neutral-900: #111827;
   --neutral-800: #1f2937;
   --neutral-700: #374151;
@@ -30,6 +20,9 @@
   --paragraph: 1rem;
   --helperText: 0.8rem;
   --copyrightText: 0.7rem;
+  /*Alert*/
+  --error: #ff0000b0;
+  --success: #6ec009cf;
 }
 html {
   box-sizing: border-box;
