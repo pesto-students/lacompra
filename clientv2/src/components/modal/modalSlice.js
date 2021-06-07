@@ -40,6 +40,8 @@ const modalSlice = createSlice({
   reducers: {
     modalClose: (state) => {
       state.modalState = 'close';
+      state.loading = 'idle';
+      state.error = "";
     },
     modalOpen: (state) => {
       state.modalState = 'open';

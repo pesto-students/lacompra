@@ -18,7 +18,14 @@ const Modal = () => {
   };
   const closeModal = () => {
     dispatch(modalClose());
+    resetForm();
   };
+  const resetForm = () => {
+    setEmail("");
+    setPassword("");
+    setUsername("");
+  };
+
   return (
     <div
       style={{ display: modalState === "close" ? "none" : "" }}
