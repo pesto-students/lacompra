@@ -79,8 +79,8 @@ const Cart = () => {
   return (
     <section className="cart">
       <h1>cart</h1>
-      {!cartItems.length && <p className="text_empty">Cart is empty</p>}
-      {cartItems.map((item) => (
+      {!cartItems?.length && <p className="text_empty">Cart is empty</p>}
+      {cartItems?.map((item) => (
         <div className="product" key={item.product.id}>
           <img src={item.product.images[0]} alt={item.product.title} />
           <h4>{item.product.title}</h4>

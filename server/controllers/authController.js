@@ -51,6 +51,7 @@ exports.signup = catchAysnc(async (req, res, next) => {
   // });
   // console.log('newUser: ', newUser);
   const newUser = await User.create(req.body);
+  console.log('newUser: ', newUser);
 
   createSendToken(newUser, 201, res);
 });
@@ -118,3 +119,9 @@ exports.updatePassword = catchAysnc(async (req, res, next) => {
   await user.save();
   createSendToken(user, 200, res);
 });
+
+exports.logout = catchAysnc(async (req, res, next) => {
+  console.log('req: ');
+  res.clearCookie('jwt');
+  res.status(200).json({ status: "success" });
+})

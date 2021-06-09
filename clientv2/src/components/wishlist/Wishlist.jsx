@@ -6,7 +6,7 @@ import { addToCart } from "../cart/cartSlice";
 import "./wishlist.styles.scss";
 const Wishlist = () => {
   const dispatch = useDispatch();
-  const { cartItems } = useSelector((state) => state.cart);
+  const { cartItems = [] } = useSelector((state) => state.cart);
   const { loading, wishlistItems } = useSelector((state) => state.wishlist);
   const { isLoggedIn } = useSelector((state) => state.modal);
 

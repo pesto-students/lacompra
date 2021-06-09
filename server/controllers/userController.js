@@ -103,8 +103,10 @@ exports.userCart = catchAysnc(async (req, res) => {
 
 exports.getUserCart = catchAysnc(async (req, res) => {
   // let cart = await Cart.findOne({ orderdBy: req.user._id }).populate("products.product", "_id title price images");
-  let cart = await Cart.findOne({ orderdBy: req.user._id })
-  const { products, cartTotal } = cart;
+  let cart = await Cart.findOne({ orderdBy: req.user._id });
+  let products = cart?.products;
+  let cartTotal = cart?.cartTotal;
+
   res.status(200).json({
     status: 'success',
     data: { products, cartTotal }
