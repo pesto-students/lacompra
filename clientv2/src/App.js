@@ -5,7 +5,7 @@ import Homepage from './pages/homepage/Homepage'
 import Filtered from './pages/filtered/Filtered'
 import Checkout from './pages/checkout/Checkout'
 import Info from './pages/info/Info'
-
+import ProductDetails from './pages/productDetails/ProductDetails'
 
 
 import Header from "./components/header/Header.jsx";
@@ -30,10 +30,10 @@ function App() {
         rtl={false}
         draggable
         pauseOnHover />
-      <Route path='/info/:status/:id?' component={Info} exact />
-
-      <Route path='/filtered' component={Filtered} exact />
-      <Route path='/checkout' component={Checkout} exact />
+      <Route path='/info/:status/:id?' component={Info} />
+      <Route path='/productdetails/:id' component={ProductDetails} />
+      <Route path='/filtered' component={Filtered} />
+      <Route path='/checkout' component={Checkout} />
       <Route path='/' component={Homepage} exact />
       <Footer />
     </Router>

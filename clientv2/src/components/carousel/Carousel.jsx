@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { PrevButton, NextButton } from "./CarouselButtons";
 import { useEmblaCarousel as useCarousel } from "embla-carousel/react";
 import { FaQuoteLeft } from "react-icons/fa";
+import { useHistory } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 import { addToWishlist } from "../wishlist/wishlistSlice";
@@ -9,6 +10,7 @@ import "./carousel.styles.css";
 
 const Carousel = ({ config, slides }) => {
   const dispatch = useDispatch();
+  let history = useHistory();
   // const { wishlistItems } = useSelector((state) => state.wishlist);
 
   const [viewportRef, carousel] = useCarousel(config?.viewportConfig);
@@ -47,7 +49,12 @@ const Carousel = ({ config, slides }) => {
                         )}
                         {config?.key === "productCarousel" && (
                           <>
-                            <button className="productCarousel carousel__cta">
+                            <button
+                              onClick={() =>
+                                history.push(`/productdetails/${slide._id}`)
+                              }
+                              className="productCarousel carousel__cta"
+                            >
                               View Product
                             </button>
                             <button
