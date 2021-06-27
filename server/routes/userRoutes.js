@@ -24,6 +24,8 @@ router.get(
 router.use(authController.protect);
 
 router.route("/cart").get(userController.getUserCart).post(userController.userCart).delete(userController.emptyCart);
+router.route("/stripeCheckoutSession").get(userController.stripeCheckoutSession);
+router.route("/verifypayment/:id").get(userController.verifyPayment);
 
 router.route("/wishlist").post(userController.addToWishlist).get(userController.wishlist).delete(userController.removeFromWishlist);
 

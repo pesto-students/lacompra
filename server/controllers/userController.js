@@ -5,6 +5,10 @@ const factory = require('./handlerFactory');
 const { User } = require('../models/userModel');
 const Cart = require('../models/cartModel');
 const Product = require('../models/productModel.js');
+
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+let YOUR_DOMAIN = 'http://localhost:3002';
+
 //Routes handler
 exports.getAllUsers = catchAysnc(async (req, res, next) => {
   const users = await User.find();
@@ -57,7 +61,7 @@ exports.userCart = catchAysnc(async (req, res) => {
 
   const user = req.user;
   // check if cart with logged in user id already exist
-  let cartExistByThisUser = await Cart.findOne({ orderdBy: user._id }).exec();
+  let cartExistByThisUser = await Cart.findOne({ orderdBy: user._id });
 
 
   if (cartExistByThisUser) {
@@ -104,6 +108,7 @@ exports.userCart = catchAysnc(async (req, res) => {
 exports.getUserCart = catchAysnc(async (req, res) => {
   // let cart = await Cart.findOne({ orderdBy: req.user._id }).populate("products.product", "_id title price images");
   let cart = await Cart.findOne({ orderdBy: req.user._id });
+  console.log('cart: ', cart);
   let products = cart?.products;
   let cartTotal = cart?.cartTotal;
 
@@ -161,4 +166,66 @@ exports.removeFromWishlist = catchAysnc(async (req, res) => {
     status: 'success',
     data: user
   });
+});
+
+exports.stripeCheckoutSession = catchAysnc(async (req, res, next) => {
+  let cart = await Cart.findOne({ orderdBy: req.user._id });
+  if (!cart?.products.length) {
+    return next(
+      new AppError(
+        'Your cart is empty. Please add a product',
+        400
+      )
+    );
+  }
+  const priceForStripe = cart?.cartTotal * 100;
+  const currency = 'inr';
+  const session = await stripe.checkout.sessions.create({
+    locale: 'auto',
+    billing_address_collection: 'auto',
+    submit_type: "pay",
+    payment_method_types: ['card'],
+    line_items: [
+      {
+        price_data: {
+          currency,
+          product_data: {
+            name: `Use the following test data:
+            card num: 4242 4242 4242 4242
+            expiry: any date in future`,
+          },
+          unit_amount: priceForStripe,
+        },
+        quantity: 1,
+      },
+    ],
+    mode: 'payment',
+    success_url: `${YOUR_DOMAIN}/info/success/{CHECKOUT_SESSION_ID}`,
+    cancel_url: `${YOUR_DOMAIN}/info/canceled`,
+  });
+  res.status(200).json({ status: 'success', data: session.id });
+});
+
+exports.verifyPayment = catchAysnc(async (req, res, next) => {
+  const { id } = req.params;
+  if (id == "undefined") {
+    console.log('id: ', id);
+    return next(
+      new AppError(
+        'Canceled',
+        400
+      )
+    );
+  }
+  const { payment_status } = await stripe.checkout.sessions.retrieve(id);
+  const paid = payment_status === "paid";
+  let cartExistByThisUser = await Cart.findOne({ orderdBy: req.user._id });
+
+
+  if (cartExistByThisUser && paid) {
+    cartExistByThisUser.remove();
+  }
+
+  res.status(200).json({ status: 'success', paid });
+
 });

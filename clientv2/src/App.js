@@ -3,6 +3,10 @@ import { ToastContainer } from 'react-toastify';
 
 import Homepage from './pages/homepage/Homepage'
 import Filtered from './pages/filtered/Filtered'
+import Checkout from './pages/checkout/Checkout'
+import Info from './pages/info/Info'
+
+
 
 import Header from "./components/header/Header.jsx";
 import Footer from "./components/footer/Footer.jsx";
@@ -26,7 +30,10 @@ function App() {
         rtl={false}
         draggable
         pauseOnHover />
+      <Route path='/info/:status/:id?' component={Info} exact />
+
       <Route path='/filtered' component={Filtered} exact />
+      <Route path='/checkout' component={Checkout} exact />
       <Route path='/' component={Homepage} exact />
       <Footer />
     </Router>

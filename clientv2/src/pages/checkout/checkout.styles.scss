@@ -1,0 +1,21 @@
+.checkout {
+  min-height: 90vh;
+  &_wrapper {
+    display: flex;
+  }
+  &_cart {
+    width: 50%;
+    max-height: 85vh;
+    overflow-y: scroll;
+  }
+  .cart .product {
+    display: flex;
+    flex-direction: row;
+    margin: 2rem auto;
+    justify-content: space-between;
+    align-items: center;
+  }
+  img {
+    width: 20%;
+  }
+}

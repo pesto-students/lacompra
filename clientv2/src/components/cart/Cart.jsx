@@ -1,18 +1,20 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCartItems, addToCart } from "./cartSlice";
+import StripeCheckoutButton from "../stripe-btn/Stripe-btn";
 import "./cart.styles.scss";
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const { loading, cartItems } = useSelector((state) => state.cart);
+  const { loading, cartItems, cartTotal } = useSelector((state) => state.cart);
   const { isLoggedIn } = useSelector((state) => state.modal);
 
   useEffect(() => {
     if (isLoggedIn) dispatch(getCartItems());
+    console.log("isLoggedIn: ", isLoggedIn);
 
     // eslint-disable-next-line
-  }, []);
+  }, [isLoggedIn]);
 
   const removeFromCart = (idToRemove) => {
     const filteredCart = [];
@@ -75,11 +77,11 @@ const Cart = () => {
   };
   if (!isLoggedIn) return <p className="text_empty">Please login</p>;
   if (loading === "loading") return <div>...loading</div>;
-
+  console.log("cartItems: ", cartItems);
   return (
     <section className="cart">
       <h1>cart</h1>
-      {!cartItems?.length && <p className="text_empty">Cart is empty</p>}
+
       {cartItems?.map((item) => (
         <div className="product" key={item.product.id}>
           <img src={item.product.images[0]} alt={item.product.title} />
@@ -105,7 +107,7 @@ const Cart = () => {
                 <label htmlFor="quatity">Quatity:</label>
                 <select
                   onChange={(e) => handleQuantityChange(e, item.product.id)}
-                  defaultValue={item.product.count}
+                  value={item.product.count}
                   name="quatity"
                   id="quatity"
                 >
@@ -118,11 +120,15 @@ const Cart = () => {
           </div>
         </div>
       ))}
+      {!cartItems?.length ? (
+        <p className="text_empty">Cart is empty</p>
+      ) : (
+        <>
+          <p>Total Price: {cartTotal}</p>
+          <StripeCheckoutButton />
+        </>
+      )}
     </section>
   );
 };
 export default Cart;
-// onClick={() => dispatch(deleteFromCart(item.id))}
-
-//TODO
-//2) add a check for login
