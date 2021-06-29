@@ -40,12 +40,17 @@ const EmblaCarousel = ({ slides = [] }) => {
           <div className="embla__container">
             {slides.map((slide, index) => (
               <div className="embla__slide" key={index}>
-                <div className="embla__slide__inner">
-                  <img
+                <div
+                  style={{
+                    backgroundImage: `url(${slide})`,
+                  }}
+                  className="embla__slide__inner"
+                >
+                  {/* <img
                     className="embla__slide__img"
                     src={slide}
                     alt="A dress"
-                  />
+                  /> */}
                 </div>
               </div>
             ))}

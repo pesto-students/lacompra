@@ -1,3 +1,69 @@
 .productDetails {
   min-height: 90vh;
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  justify-content: space-between;
+  // padding-top: 1rem;
+  align-items: center;
+  @media only screen and (max-width: 767px) {
+    flex-direction: column;
+  }
+  &_carouselCol {
+    width: 60%;
+    @media only screen and (max-width: 767px) {
+      width: auto;
+    }
+  }
+  &_ctaCol {
+    width: 40%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    @media only screen and (max-width: 767px) {
+      width: auto;
+    }
+  }
+  &_cta {
+    display: flex;
+    flex-direction: column;
+  }
+  &_btn {
+    border: none;
+    background-color: var(--neutral-100);
+    color: var(--neutral-500);
+    letter-spacing: 1px;
+    width: 12rem;
+    padding: 1rem 0.5rem;
+    margin: 1rem 0;
+    cursor: pointer;
+    &:hover {
+      color: var(--neutral-700);
+      background-color: var(--neutral-300);
+    }
+  }
+  &_title {
+    text-align: center;
+    font-size: var(--header1);
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    color: var(--neutral-700);
+    font-weight: 400;
+    margin: 1rem auto;
+  }
+  &_info {
+    display: flex;
+    flex-direction: column;
+    letter-spacing: 0.8px;
+    color: var(--neutral-700);
+    text-transform: capitalize;
+  }
+  &_text {
+    margin-top: 1rem;
+    span {
+      font-weight: 700;
+      font-size: var(--header4);
+    }
+  }
 }

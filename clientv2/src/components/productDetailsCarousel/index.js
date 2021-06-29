@@ -1,7 +1,7 @@
 import Carousel from "./ProductDetailsCarousel";
 
 const ProductDetailsCarousel = ({ slides }) => (
-  <div>
+  <div className="ProductDetailsCarousel">
     <Carousel slides={slides} />
   </div>
 );

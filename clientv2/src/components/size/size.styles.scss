@@ -1,0 +1,13 @@
+.productSize {
+  margin: 1rem 0;
+  label {
+    font-size: var(--header4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    padding-right: 4px;
+  }
+  select {
+    margin-right: 8px;
+  }
+}

@@ -59,19 +59,45 @@ const ProductDetails = () => {
   };
   return (
     <section className="productDetails">
-      <ProductDetailsCarousel slides={images} />
-      <div>{title}</div>
-      <div>
-        <span>category: {category}</span>
-        <span>description: {description}</span>
+      <div className="productDetails_carouselCol">
+        <ProductDetailsCarousel slides={images} />
+        <div className="productDetails_title">{title}</div>
+        <div className="productDetails_info">
+          <span className="productDetails_text">
+            {" "}
+            <span>category:</span> {category}
+          </span>
+          <span className="productDetails_text">
+            <span>description:</span> {description}
+          </span>
+          <span className="productDetails_text">
+            <span>price:</span> {price}
+          </span>
+          <span className="productDetails_text">
+            <span>gender:</span> {gender}
+          </span>
+          <span className="productDetails_text">
+            <span>Rating:</span> {ratingsAverage} / 5
+          </span>
+        </div>
       </div>
-      <Size />
-      <button onClick={() => handleAddToCart({ s, m, xl, l, id })}>
-        Add to cart
-      </button>
-      <button onClick={() => dispatch(addToWishlist(id))}>
-        Add to wishlist
-      </button>
+      <div className="productDetails_ctaCol">
+        <Size />
+        <div className="productDetails_cta">
+          <button
+            className="productDetails_btn"
+            onClick={() => handleAddToCart({ s, m, xl, l, id })}
+          >
+            Add to cart
+          </button>
+          <button
+            className="productDetails_btn"
+            onClick={() => dispatch(addToWishlist(id))}
+          >
+            Add to wishlist
+          </button>
+        </div>
+      </div>
     </section>
   );
 };
