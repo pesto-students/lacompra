@@ -67,10 +67,12 @@
   height: 40vh;
 }
 .productCarousel.title {
-  color: var(--neutral-300);
+  color: var(--neutral-50);
   letter-spacing: 0.8px;
   text-transform: capitalize;
-  margin: 1rem;
+  padding: 1rem;
+  width: 100%;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
 }
 
 .testimonial .carousel__slide {
