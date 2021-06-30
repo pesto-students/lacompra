@@ -1,31 +1,21 @@
-$coral: #eb9478;
-$maroon: #8e2807;
-$title: #493b76;
+.address {
+  width: 40%;
+  height: fit-content;
+  position: sticky;
+  top: 30px;
+  @media (max-width: 767px) {
+    width: 80%;
+  }
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+}
 
 .wrapper {
   margin-top: 5%;
   width: 60%;
   display: flex;
   justify-content: center;
-  font-family: "Arimo";
-  background-color: $coral;
-  -webkit-box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
-  -moz-box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
-  box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
-  animation: slideUp 2000ms ease;
-}
-
-@keyframes slideUp {
-  0% {
-    -webkit-transform: translateY(100%);
-    transform: translateY(100%);
-    visibility: visible;
-  }
-
-  100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
 }
 
 .container {
@@ -52,7 +42,6 @@ form {
     letter-spacing: 0.15rem;
     font-family: "Arimo";
     margin-top: 5px;
-    color: $maroon;
     border-radius: 4px;
   }
 
@@ -60,13 +49,11 @@ form {
     text-transform: uppercase;
     font-size: 12px;
     letter-spacing: 2px;
-    color: $maroon;
   }
 
   h1 {
     font-size: 24px;
     line-height: 10px;
-    color: $title;
     letter-spacing: 1px;
   }
 

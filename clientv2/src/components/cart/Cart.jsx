@@ -1,18 +1,19 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { getCartItems, addToCart } from "./cartSlice";
-import StripeCheckoutButton from "../stripe-btn/Stripe-btn";
+import { sidedrawerClose } from "../sidedrawer/sidedrawerSlice";
+
 import "./cart.styles.scss";
 
 const Cart = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { loading, cartItems, cartTotal } = useSelector((state) => state.cart);
   const { isLoggedIn } = useSelector((state) => state.modal);
 
   useEffect(() => {
     if (isLoggedIn) dispatch(getCartItems());
-    console.log("isLoggedIn: ", isLoggedIn);
-
     // eslint-disable-next-line
   }, [isLoggedIn]);
 
@@ -75,9 +76,12 @@ const Cart = () => {
     }
     return options;
   };
+  const handleProceedClick = () => {
+    dispatch(sidedrawerClose());
+    history.push("/checkout");
+  };
   if (!isLoggedIn) return <p className="text_empty">Please login</p>;
   if (loading === "loading") return <div>...loading</div>;
-  console.log("cartItems: ", cartItems);
   return (
     <section className="cart">
       <h1>cart</h1>
@@ -116,17 +120,25 @@ const Cart = () => {
               </div>
             )}
 
-            <button onClick={() => removeFromCart(item._id)}>remove</button>
+            <button
+              className="cart_removeCta"
+              onClick={() => removeFromCart(item._id)}
+            >
+              remove
+            </button>
           </div>
         </div>
       ))}
       {!cartItems?.length ? (
         <p className="text_empty">Cart is empty</p>
       ) : (
-        <>
-          <p>Total Price: {cartTotal}</p>
-          <StripeCheckoutButton />
-        </>
+        <div className="cart_footer">
+          <p className="cart_price">Total Price: ₹ {cartTotal}</p>
+          <button onClick={handleProceedClick} className="cart_checkoutCta">
+            Proceed to checkout
+          </button>
+          {/* <StripeCheckoutButton /> */}
+        </div>
       )}
     </section>
   );

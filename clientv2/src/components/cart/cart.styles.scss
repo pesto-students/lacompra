@@ -30,11 +30,23 @@
     //   border-bottom: 2px solid var(--neutral-900);
     // }
   }
-  button {
+  .cart_removeCta {
     background: none;
     border: none;
     cursor: pointer;
     letter-spacing: 1px;
+  }
+  .cart_checkoutCta {
+    border: none;
+    width: 100%;
+    padding: 1rem;
+    letter-spacing: 1px;
+    font-size: var(--header4);
+    cursor: pointer;
+    background: var(--neutral-700);
+    color: var(--neutral-200);
+    text-transform: capitalize;
+    margin: 1rem auto;
   }
   .warning {
     text-align: center;
@@ -49,5 +61,17 @@
     border: 1px solid var(--neutral-500);
     margin: 0px 4px;
     border-radius: 4px;
+  }
+  &_price {
+    font-size: var(--header1);
+    letter-spacing: 1px;
+    text-align: center;
+    margin: 1rem 0;
+  }
+  &_footer {
+    position: sticky;
+    bottom: 0;
+    background: var(--neutral-100);
+    padding: 1rem 0;
   }
 }

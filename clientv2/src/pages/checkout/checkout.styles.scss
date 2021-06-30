@@ -1,12 +1,36 @@
 .checkout {
   min-height: 90vh;
+  width: 90%;
+  margin: 0 auto;
   &_wrapper {
     display: flex;
+    justify-content: space-between;
+    @media only screen and (max-width: 767px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  &_headerText {
+    text-align: center;
+    text-transform: capitalize;
+    margin: 2rem 0;
+    letter-spacing: 1px;
+    color: var(--neutral-700);
   }
   &_cart {
     width: 50%;
-    max-height: 85vh;
-    overflow-y: scroll;
+    .cart_checkoutCta {
+      display: none;
+    }
+    .cart_footer {
+      background: var(--neutral-200);
+    }
+    @media only screen and (max-width: 767px) {
+      width: 80%;
+    }
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+    }
   }
   .cart .product {
     display: flex;

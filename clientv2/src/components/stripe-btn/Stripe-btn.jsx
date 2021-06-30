@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { loadStripe } from "@stripe/stripe-js";
 import backendDomain from "../../utils/backend";
+import "./stripe-btn.styles.scss";
 const stripePromise = loadStripe("pk_test_sBHmQKJP8gGI9Id9J9XsAOD900I2ksR5i2");
 
 const StripeCheckoutButton = () => {
@@ -32,7 +33,9 @@ const StripeCheckoutButton = () => {
 
   return (
     <>
-      <button onClick={handleClick}>Checkout</button>
+      <button className="stripe-btn" onClick={handleClick}>
+        Checkout
+      </button>
     </>
   );
 };

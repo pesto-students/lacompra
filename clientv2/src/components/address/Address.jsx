@@ -1,6 +1,7 @@
 // import { useEffect } from "react";
 // import { useDispatch, useSelector } from "react-redux";
 // import { getCartItems, addToCart } from "./cartSlice";
+import StripeCheckoutButton from "../stripe-btn/Stripe-btn";
 import "./address.styles.scss";
 
 const Address = () => {
@@ -11,25 +12,16 @@ const Address = () => {
   return (
     <section className="address">
       <form>
-        <h1>
-          <i className="fas fa-shipping-fast"></i>
-          Shipping Details
-        </h1>
-        <div className="name">
-          <div>
-            <label htmlFor="f-name">First</label>
-            <input type="text" name="f-name" />
-          </div>
-          <div>
-            <label htmlFor="l-name">Last</label>
-            <input type="text" name="l-name" />
-          </div>
+        <h1>Shipping Details</h1>
+        <div className="address_name">
+          <label htmlFor="name">Full Name</label>
+          <input type="text" name="name" />
         </div>
-        <div className="street">
-          <label htmlFor="name">Street</label>
+        <div className="address_address">
+          <label htmlFor="address">Address</label>
           <input type="text" name="address" />
         </div>
-        <div className="address-info">
+        <div className="address_info">
           <div>
             <label htmlFor="city">City</label>
             <input type="text" name="city" />
@@ -43,9 +35,7 @@ const Address = () => {
             <input type="text" name="zip" />
           </div>
         </div>
-        <div className="btns">
-          <button>Purchase</button>
-        </div>
+        <StripeCheckoutButton />
       </form>
     </section>
   );

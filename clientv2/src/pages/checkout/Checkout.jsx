@@ -8,8 +8,10 @@ const Checkout = () => {
 
   return (
     <section className="checkout">
-      <h2>Checkout Page</h2>
-      <p>please fill and confirm your details and click checkout.</p>
+      <h2 className="checkout_headerText">Checkout Page</h2>
+      <p className="checkout_headerText">
+        please fill and confirm your details and click checkout.
+      </p>
       <div className="checkout_wrapper">
         <div className="checkout_cart">
           <Cart />
