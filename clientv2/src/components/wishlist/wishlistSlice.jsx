@@ -1,4 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
+
 import backendDomain from "../../utils/backend";
 
 export const addToWishlist = createAsyncThunk(
@@ -61,11 +63,13 @@ const wishlistSlice = createSlice({
       state.loading = "loading";
     });
     builder.addCase(addToWishlist.fulfilled, (state, { payload }) => {
+      toast.success(`added to the Wishlist`);
       state.wishlist = payload.data.wishlist;
       state.loading = "loaded";
     });
     builder.addCase(addToWishlist.rejected, (state, action) => {
       state.loading = "error";
+      toast.error("Something went wrong");
       state.error = action.error.message;
     });
     builder.addCase(getWishlist.pending, (state) => {

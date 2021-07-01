@@ -1,4 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
+
 import backendDomain from "../../utils/backend";
 
 export const getCartItems = createAsyncThunk("cart/getCartItems", async () => {
@@ -11,6 +13,7 @@ export const getCartItems = createAsyncThunk("cart/getCartItems", async () => {
   });
   return await response.json();
 });
+
 export const addToCart = createAsyncThunk("cart/addToCart", async (data) => {
   const response = await fetch(`${backendDomain}/api/v1/users/cart`, {
     method: "POST",
@@ -24,6 +27,7 @@ export const addToCart = createAsyncThunk("cart/addToCart", async (data) => {
   });
   return await response.json();
 });
+
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
@@ -51,12 +55,14 @@ const cartSlice = createSlice({
       state.loading = "loading";
     });
     builder.addCase(addToCart.fulfilled, (state, { payload }) => {
+      toast.success(`added to the cart`);
       state.cartItems = payload.data.products;
       state.cartTotal = payload.data.cartTotal;
       state.loading = "loaded";
     });
     builder.addCase(addToCart.rejected, (state, action) => {
       state.loading = "error";
+      toast.error("Something went wrong");
       state.error = action.error.message;
     });
   },
