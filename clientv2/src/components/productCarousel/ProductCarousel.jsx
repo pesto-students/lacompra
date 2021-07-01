@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Skeleton from "react-loading-skeleton";
 import { fetchTopProducts } from "./productCarouselSlice";
 
 import Carousel from "../carousel/Carousel";
@@ -24,9 +25,20 @@ const ProductCarousel = () => {
   const latestProducts = () => {
     return allProducts?.slice(0, 10);
   };
-
+  const skeleton = () => (
+    <div className="productCarousel_skeleton">
+      <Skeleton count={3} width={`30%`} height={`40vh`} />
+    </div>
+  );
   if (loading === "idle" || !allProducts.length || !topProducts.length) {
-    return <div>Loading...</div>;
+    return (
+      <section className="productCarousel">
+        <h2 className="carouselHeading">Latest Products</h2>
+        {skeleton()}
+        <h2 className="carouselHeading">Most Popular Products</h2>
+        {skeleton()}
+      </section>
+    );
   }
   return (
     <section className="productCarousel">
