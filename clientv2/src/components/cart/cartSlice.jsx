@@ -14,19 +14,24 @@ export const getCartItems = createAsyncThunk("cart/getCartItems", async () => {
   return await response.json();
 });
 
-export const addToCart = createAsyncThunk("cart/addToCart", async (data) => {
-  const response = await fetch(`${backendDomain}/api/v1/users/cart`, {
-    method: "POST",
-    credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      products: data,
-    }),
-  });
-  return await response.json();
-});
+export const addToCart = createAsyncThunk(
+  "cart/addToCart",
+  async (data, { getState, rejectWithValue }) => {
+    if (!getState().modal.isLoggedIn)
+      return rejectWithValue("please sign in first.");
+    const response = await fetch(`${backendDomain}/api/v1/users/cart`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        products: data,
+      }),
+    });
+    return await response.json();
+  }
+);
 
 const cartSlice = createSlice({
   name: "cart",
@@ -61,8 +66,9 @@ const cartSlice = createSlice({
       state.loading = "loaded";
     });
     builder.addCase(addToCart.rejected, (state, action) => {
+      console.log("action: ", action);
       state.loading = "error";
-      toast.error("Something went wrong");
+      toast.error(action.payload);
       state.error = action.error.message;
     });
   },

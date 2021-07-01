@@ -5,7 +5,9 @@ import backendDomain from "../../utils/backend";
 
 export const addToWishlist = createAsyncThunk(
   "wishlist/addToWishlist",
-  async (data) => {
+  async (data, { getState, rejectWithValue }) => {
+    if (!getState().modal.isLoggedIn)
+      return rejectWithValue("please sign in first.");
     const response = await fetch(`${backendDomain}/api/v1/users/wishlist`, {
       method: "POST",
       credentials: "include",
@@ -69,7 +71,7 @@ const wishlistSlice = createSlice({
     });
     builder.addCase(addToWishlist.rejected, (state, action) => {
       state.loading = "error";
-      toast.error("Something went wrong");
+      toast.error(action.payload || "Something went wrong");
       state.error = action.error.message;
     });
     builder.addCase(getWishlist.pending, (state) => {
