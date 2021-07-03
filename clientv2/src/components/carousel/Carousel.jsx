@@ -42,7 +42,12 @@ const Carousel = ({ config, slides }) => {
                             <h2 className="carousel__slide__heading">
                               Buy Premium <br /> {slide.title.toUpperCase()}
                             </h2>
-                            <button className="hero carousel__cta">
+                            <button
+                              onClick={() =>
+                                config?.handleCategoryClick(slide.title)
+                              }
+                              className="hero carousel__cta"
+                            >
                               shop now
                             </button>
                           </>

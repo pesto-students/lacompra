@@ -14,13 +14,23 @@ const generateQuery = (queryObj) => {
 export const fetchfilteredProducts = createAsyncThunk(
   'filteredSidedrawer/fetchfilteredProducts',
   async (data, { getState }) => {
-    const finalQuery = { ...getState().filterSidedrawer.queryObj, ...data }
-    const response = await fetch(`${backendDomain}/api/v1/products${generateQuery(finalQuery)}`);
+    const previousQueryObj = getState().filterSidedrawer.queryObj;
+    const finalQueryObj = { ...previousQueryObj, ...data };
+    const currentQueryStr = generateQuery(finalQueryObj);
+    const response = await fetch(`${backendDomain}/api/v1/products${currentQueryStr}`);
     const fetchedData = await response.json();
-    const queryObj = finalQuery;
     return {
       fetchedData,
-      queryObj
+      queryObj: finalQueryObj,
+    }
+  },
+  {
+    condition: (data, { getState }) => {
+      const fetchStatus = getState().filterSidedrawer.loading;
+      if (fetchStatus === 'loading') {
+        // in progress, don't need to re-fetch
+        return false
+      }
     }
   }
 )
