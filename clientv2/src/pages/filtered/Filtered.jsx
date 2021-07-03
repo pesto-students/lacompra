@@ -1,9 +1,10 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { sidedrawerOpen } from "../../components/sidedrawer/sidedrawerSlice";
 import Pagination from "../../components/pagination/Pagination";
 import { addToWishlist } from "../../components/wishlist/wishlistSlice";
 import { addToCart } from "../../components/cart/cartSlice";
-
+import { resetAll } from "../../components/filterSidedrawer/filterSidedrawerSlice";
 import "./filtered.styles.scss";
 
 const Filtered = () => {
@@ -12,6 +13,10 @@ const Filtered = () => {
     (state) => state.filterSidedrawer
   );
   const { cartItems } = useSelector((state) => state.cart);
+
+  useEffect(() => {
+    return () => dispatch(resetAll());
+  }, []);
 
   const handleAddToCart = (item) => {
     const cartItemsTransformed = [];

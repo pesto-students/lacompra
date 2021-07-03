@@ -12,6 +12,7 @@ import Header from "./components/header/Header.jsx";
 import Footer from "./components/footer/Footer.jsx";
 import Sidedrawer from "./components/sidedrawer/Sidedrawer.jsx";
 import Modal from "./components/modal/Modal";
+import FileUpload from "./components/fileUpload/FileUpload";
 
 import 'react-toastify/dist/ReactToastify.min.css';
 import './App.css';
@@ -34,7 +35,7 @@ function App() {
       <Route path='/productdetails/:id' component={ProductDetails} />
       <Route path='/filtered' component={Filtered} />
       <Route path='/checkout' component={Checkout} />
-      <Route path='/' component={Homepage} exact />
+      <Route path='/' component={FileUpload} exact />
       <Footer />
     </Router>
   );

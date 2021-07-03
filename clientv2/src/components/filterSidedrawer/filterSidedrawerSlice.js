@@ -34,40 +34,41 @@ export const fetchfilteredProducts = createAsyncThunk(
     }
   }
 )
-
+const initialState = {
+  filteredProducts: [],
+  queryObj: {},
+  sortBy: {
+    latest: true,
+    "most popular": false,
+    oldest: false
+  },
+  brands: {
+    "Louis Philippe": false,
+    "Van Heusen": false,
+    "Allen Solly": false,
+    "Peter England": false,
+    "Park Avenue": false,
+    "Monte Carlo": false,
+    "Belmonte": false,
+    "Oxemberg": false,
+    "Provogue": false,
+    "Indian Terrain": false,
+  },
+  allResults: 0,
+  loading: "idle",
+  error: "",
+};
 const filterSidedrawerSlice = createSlice({
   name: 'filteredSidedrawer',
-  initialState: {
-    filteredProducts: [],
-    queryObj: {},
-    sortBy: {
-      latest: true,
-      "most popular": false,
-      oldest: false
-    },
-    brands: {
-      "Louis Philippe": false,
-      "Van Heusen": false,
-      "Allen Solly": false,
-      "Peter England": false,
-      "Park Avenue": false,
-      "Monte Carlo": false,
-      "Belmonte": false,
-      "Oxemberg": false,
-      "Provogue": false,
-      "Indian Terrain": false,
-    },
-    allResults: 0,
-    loading: "idle",
-    error: "",
-  },
+  initialState,
   reducers: {
     updateSortBy: (state, { payload }) => {
       state.sortBy = payload;
     },
     updateBrands: (state, { payload }) => {
       state.brands = payload
-    }
+    },
+    resetAll: (state) => state = initialState,
   },
   extraReducers: (builder) => {
     //fetchfilteredProducts.pending === 'filteredProducts/fetchfilteredProducts/pending'
@@ -88,5 +89,5 @@ const filterSidedrawerSlice = createSlice({
       });
   }
 });
-export const { updateSortBy, updateBrands } = filterSidedrawerSlice.actions
+export const { updateSortBy, updateBrands, resetAll } = filterSidedrawerSlice.actions
 export default filterSidedrawerSlice;
