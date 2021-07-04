@@ -36,7 +36,6 @@ const fileUploadSlice = createSlice({
 
   },
   extraReducers: (builder) => {
-    //uploadImages.pending === 'filteredProducts/uploadImages/pending'
     builder.addCase(uploadImages.pending, (state) => {
       state.loading = "loading";
     });
