@@ -19,6 +19,9 @@
       pointer-events: none;
     }
   }
+  &_imageWrapper {
+    position: relative;
+  }
   &_images {
     display: flex;
     flex-wrap: wrap;
@@ -33,5 +36,21 @@
     font-size: var(--header3);
     letter-spacing: 1px;
     text-transform: capitalize;
+  }
+  &_close {
+    position: absolute;
+    right: 10px;
+    top: 4px;
+    font-size: 2rem;
+    border: 1px solid;
+    background-color: gray;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    justify-content: center;
   }
 }

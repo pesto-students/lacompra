@@ -1,7 +1,7 @@
 import Resizer from "react-image-file-resizer";
 import { useDispatch, useSelector } from "react-redux";
 import "./fileupload.styles.scss";
-import { uploadImages } from "./fileUpload.slice";
+import { uploadImages, removeImage } from "./fileUpload.slice";
 
 const FileUpload = () => {
   const dispatch = useDispatch();
@@ -26,6 +26,7 @@ const FileUpload = () => {
       }
     }
   };
+
   // if (loading === "loading") return <div>...loading...</div>;
   return (
     <div className="fileupload">
@@ -46,11 +47,15 @@ const FileUpload = () => {
       <p className="fileupload_totalImg">total images : {images.length}</p>
       <div className="fileupload_images">
         {images.map((image) => (
-          <img
-            className="fileupload_image"
-            key={image.public_id}
-            src={image.url}
-          />
+          <div key={image.public_id} className="fileupload_imageWrapper">
+            <img className="fileupload_image" src={image.url} />
+            <i
+              onClick={() => dispatch(removeImage(image.public_id))}
+              className="fileupload_close"
+            >
+              X
+            </i>
+          </div>
         ))}
       </div>
     </div>

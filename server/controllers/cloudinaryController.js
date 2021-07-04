@@ -20,14 +20,9 @@ exports.uploadImages = catchAysnc(async (req, res) => {
 
 exports.removeImage = (req, res) => {
   let image_id = req.body.public_id;
-  cloudinary.uploader.destroy(image_id, (err, result) => {
-    if (err) return res.status(400).json({
-      status: "fail",
-      err
+  cloudinary.uploader.destroy(image_id, (result) => {
+    return res.json({
+      status: result,
     });
-
-    res.json({
-      status: "success",
-    })
   });
 }
