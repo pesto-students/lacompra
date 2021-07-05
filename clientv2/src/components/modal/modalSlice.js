@@ -121,6 +121,7 @@ const modalSlice = createSlice({
         state.isLoggedIn = true;
         state.modalState = 'close'
         state.loading = "loaded";
+        state.error = "";
       });
     builder.addCase(
       loginUser.rejected, (state, { payload }) => {
@@ -135,6 +136,7 @@ const modalSlice = createSlice({
       logoutUser.fulfilled, (state) => {
         state.user = {};
         state.isLoggedIn = false;
+        state.error = "";
         state.loading = "loaded";
       });
     builder.addCase(
@@ -151,6 +153,7 @@ const modalSlice = createSlice({
         state.user = payload.data.doc;
         state.isLoggedIn = true;
         state.loading = "loaded";
+        state.error = "";
       });
     builder.addCase(
       fetchCurrentUser.rejected, (state, { payload }) => {
@@ -167,6 +170,7 @@ const modalSlice = createSlice({
         state.isLoggedIn = true;
         state.modalState = 'close'
         state.loading = "loaded";
+        state.error = "";
       });
     builder.addCase(
       registerUser.rejected, (state, { payload }) => {
