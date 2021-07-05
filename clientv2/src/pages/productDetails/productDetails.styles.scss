@@ -43,6 +43,14 @@
       background-color: var(--neutral-300);
     }
   }
+  &_btn-delete {
+    background-color: var(--error);
+    color: var(--neutral-50);
+    &:hover {
+      background-color: var(--error);
+      color: var(--neutral-50);
+    }
+  }
   &_title {
     text-align: center;
     font-size: var(--header1);

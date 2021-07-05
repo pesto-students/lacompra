@@ -8,7 +8,16 @@ export const fetchSingleProduct = createAsyncThunk(
     return await response.json();
   }
 )
-
+export const deleteProduct = createAsyncThunk("productDetails/deleteProduct", async (id) => {
+  const response = await fetch(`${backendDomain}/api/v1/products/${id}`, {
+    method: "DELETE",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return await response.json();
+});
 export const productDetailsSlice = createSlice({
   name: 'productDetails',
   initialState: {

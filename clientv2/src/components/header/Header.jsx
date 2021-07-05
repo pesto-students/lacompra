@@ -8,7 +8,7 @@ import { modalOpen, logoutUser, fetchCurrentUser } from "../modal/modalSlice";
 import "./header.styles.scss";
 const Header = () => {
   const dispatch = useDispatch();
-  const { isLoggedIn } = useSelector((state) => state.modal);
+  const { isLoggedIn, user } = useSelector((state) => state.modal);
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
@@ -37,6 +37,11 @@ const Header = () => {
           <div className="hamburger-button__line" />
         </button>
         <ul>
+          {isLoggedIn && user.role === "admin" && (
+            <Link to="/productupload">
+              <li>Upload</li>
+            </Link>
+          )}
           <Link to="/filtered">
             <li>Categories</li>
           </Link>

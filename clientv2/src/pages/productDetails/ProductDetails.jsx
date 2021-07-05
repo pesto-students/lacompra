@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { fetchSingleProduct } from "./productDetails.slice";
+import { useParams, useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
+import { fetchSingleProduct, deleteProduct } from "./productDetails.slice";
 import "./productDetails.styles.scss";
 import ProductDetailsCarousel from "../../components/productDetailsCarousel";
 import Size from "../../components/size/Size";
@@ -9,8 +10,10 @@ import { addToCart } from "../../components/cart/cartSlice";
 import { addToWishlist } from "../../components/wishlist/wishlistSlice";
 
 const ProductDetails = () => {
+  const history = useHistory();
   const { id } = useParams();
   const dispatch = useDispatch();
+  const { isLoggedIn, user } = useSelector((state) => state.modal);
   const {
     product: {
       images,
@@ -33,7 +36,15 @@ const ProductDetails = () => {
   useEffect(() => {
     dispatch(fetchSingleProduct(id));
   }, [id]);
-
+  const handleDeleteProduct = async (id) => {
+    const res = await dispatch(deleteProduct(id));
+    if (res.type === "productDetails/deleteProduct/fulfilled") {
+      toast.success("Product deleted successfully");
+    } else {
+      toast.error("some error occurred while deleting");
+    }
+    history.push("/");
+  };
   const handleAddToCart = (item) => {
     const cartItemsTransformed = [];
     cartItems.forEach((cartItem) => {
@@ -94,6 +105,14 @@ const ProductDetails = () => {
           >
             Add to wishlist
           </button>
+          {isLoggedIn && user.role === "admin" && (
+            <button
+              className="productDetails_btn productDetails_btn-delete"
+              onClick={() => handleDeleteProduct(id)}
+            >
+              Delete
+            </button>
+          )}
         </div>
       </div>
     </section>
