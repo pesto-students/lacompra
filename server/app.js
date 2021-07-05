@@ -13,7 +13,9 @@ const globalErrorHandler = require('./controllers/errorController');
 
 const app = express();
 
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors({
+  origin: ['https://lacompra-beta.netlify.app/'], credentials: true
+}));
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
