@@ -6,7 +6,7 @@ import Filtered from './pages/filtered/Filtered'
 import Checkout from './pages/checkout/Checkout'
 import Info from './pages/info/Info'
 import ProductDetails from './pages/productDetails/ProductDetails'
-
+import ProductUpload from './pages/productUpload/ProductUpload'
 
 import Header from "./components/header/Header.jsx";
 import Footer from "./components/footer/Footer.jsx";
@@ -33,9 +33,10 @@ function App() {
         pauseOnHover />
       <Route path='/info/:status/:id?' component={Info} />
       <Route path='/productdetails/:id' component={ProductDetails} />
+      <Route path='/productupload' component={ProductUpload} />
       <Route path='/filtered' component={Filtered} />
       <Route path='/checkout' component={Checkout} />
-      <Route path='/' component={FileUpload} exact />
+      <Route path='/' component={Homepage} exact />
       <Footer />
     </Router>
   );

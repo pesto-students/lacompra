@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import productReducer from './pages/homepage/homepageSlice';
 import productDetailsSlice from './pages/productDetails/productDetails.slice';
+import productUploadSlice from './pages/productUpload/productUpload.slice'
 
 import topProductsSlice from './components/productCarousel/productCarouselSlice';
 import sidedrawerSlice from './components/sidedrawer/sidedrawerSlice';
@@ -26,6 +27,7 @@ export default configureStore({
     modal: modalSlice.reducer,
     productDetails: productDetailsSlice.reducer,
     size: sizeSlice.reducer,
-    fileUpload: fileUploadSlice.reducer
+    fileUpload: fileUploadSlice.reducer,
+    productUpload: productUploadSlice.reducer,
   },
 })

@@ -1,0 +1,39 @@
+.productupload {
+  min-height: 90vh;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &_content {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 4rem auto;
+  }
+  &_wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 33%;
+    margin-bottom: 2rem;
+    input,
+    select {
+      border: none;
+      padding: 1rem 0.5rem;
+      background: var(--neutral-100);
+      width: 70%;
+      color: var(--neutral-600);
+      letter-spacing: 1px;
+      &:disabled {
+        background: var(--neutral-300);
+        color: var(--neutral-700);
+        cursor: not-allowed;
+      }
+    }
+    label {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+      text-transform: capitalize;
+    }
+  }
+}
