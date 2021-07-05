@@ -3,21 +3,25 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
 import FileUpload from "../../components/fileUpload/FileUpload";
-import { uploadProduct } from "./productUpload.slice";
+import { uploadProduct, rateProduct } from "./productUpload.slice";
 import ProductCarousel from "../../components/productCarousel/ProductCarousel.jsx";
 import { fetchProducts } from "../homepage/homepageSlice";
+import Star from "../../components/star/Star";
+import { setStarsSelected } from "../../components/star/starSlice";
 
 import "./productUpload.styles.scss";
 const ProductUpload = () => {
   const dispatch = useDispatch();
+  const { starsSelected } = useSelector((state) => state.star);
+  const { isLoggedIn, user } = useSelector((state) => state.modal);
   const [formValue, setFormValue] = useState({
     title: "",
     description: "",
     price: "",
-    color: "",
-    gender: "",
+    color: "Black",
+    gender: "male",
     brand: "",
-    category: "",
+    category: "jeans",
     s: "",
     m: "",
     xl: "",
@@ -58,6 +62,7 @@ const ProductUpload = () => {
   const categories = ["jeans", "trousers", "tshirts", "shirts", "jackets"];
   useEffect(() => {
     dispatch(fetchProducts());
+    return () => dispatch(setStarsSelected(0));
   }, []);
   useEffect(() => {
     autoPopulate();
@@ -84,6 +89,8 @@ const ProductUpload = () => {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!isLoggedIn || user.role !== "admin")
+      return toast.error("Log in as Admin");
     if (images < 4) return toast.error("Images must be 4 or more");
     const emptyField = Object.keys(formValue).find(
       (key) => formValue[key] === ""
@@ -91,7 +98,19 @@ const ProductUpload = () => {
     if (emptyField) return toast.error(`${emptyField} cannot be empty`);
     const imageUrlArr = images.map((image) => image.url);
 
-    await dispatch(uploadProduct({ ...formValue, images: imageUrlArr }));
+    const postedProduct = await dispatch(
+      uploadProduct({ ...formValue, images: imageUrlArr })
+    );
+    if (postedProduct.type === "productUpload/uploadProduct/fulfilled") {
+      await dispatch(
+        rateProduct({
+          product: postedProduct.payload.id,
+          rating: starsSelected,
+          review: starsSelected < 3 ? "Product is Bad" : "Product is Good",
+        })
+      );
+      dispatch(fetchProducts());
+    }
     dispatch(fetchProducts());
   };
   const autoPopulate = () => {
@@ -109,10 +128,12 @@ const ProductUpload = () => {
       l: randomIntFromInterval(0, 50),
       sold,
     };
+    dispatch(setStarsSelected(randomIntFromInterval(1, 5)));
     setFormValue({ ...formValue, ...populatedFields });
   };
   const isDisabled = () => {
     return (
+      starsSelected < 1 ||
       images.length < 4 ||
       !!Object.keys(formValue).find((key) => formValue[key] === "")
     );
@@ -258,6 +279,10 @@ const ProductUpload = () => {
               disabled
             />
           </div>
+          <div className="productupload_wrapper">
+            <span>Rate: </span>
+            <Star />
+          </div>
         </div>
         <button
           disabled={isDisabled()}
@@ -273,3 +298,9 @@ const ProductUpload = () => {
 };
 
 export default ProductUpload;
+
+// {
+//     "review": "This is bad",
+//     "rating" : "1",
+//     "product": "60abac1082b9f31d02fdd5fe"
+// }

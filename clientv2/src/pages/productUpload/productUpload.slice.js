@@ -6,7 +6,7 @@ import backendDomain from '../../utils/backend'
 export const uploadProduct = createAsyncThunk(
   'productUpload/uploadProduct',
   async (data, { rejectWithValue, getState }) => {
-    const user = getState().modal.user.doc.id;
+    const user = getState().modal.user.id;
     const response = await fetch(`${backendDomain}/api/v1/products`, {
       method: "POST",
       credentials: "include",
@@ -19,6 +19,26 @@ export const uploadProduct = createAsyncThunk(
     if (value.status >= 400) {
       return rejectWithValue(value.message)
     }
+    return value;
+  }
+)
+
+export const rateProduct = createAsyncThunk(
+  'productUpload/rateProduct',
+  async (data, { rejectWithValue }) => {
+    const response = await fetch(`${backendDomain}/api/v1/reviews`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const value = await response.json();
+    if (value.status >= 400) {
+      return rejectWithValue(value.message)
+    }
+    toast.success("review successfully submited");
     return value;
   }
 )

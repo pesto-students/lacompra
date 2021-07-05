@@ -117,7 +117,7 @@ const modalSlice = createSlice({
     });
     builder.addCase(
       loginUser.fulfilled, (state, { payload }) => {
-        state.user = payload.data;
+        state.user = payload.data.user;
         state.isLoggedIn = true;
         state.modalState = 'close'
         state.loading = "loaded";
@@ -148,7 +148,7 @@ const modalSlice = createSlice({
     });
     builder.addCase(
       fetchCurrentUser.fulfilled, (state, { payload }) => {
-        state.user = payload.data;
+        state.user = payload.data.doc;
         state.isLoggedIn = true;
         state.loading = "loaded";
       });
