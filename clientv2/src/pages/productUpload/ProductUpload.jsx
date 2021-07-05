@@ -84,7 +84,7 @@ const ProductUpload = () => {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (images < 4) return toast.error("Images must be 3 or more");
+    if (images < 4) return toast.error("Images must be 4 or more");
     const emptyField = Object.keys(formValue).find(
       (key) => formValue[key] === ""
     );
@@ -94,7 +94,6 @@ const ProductUpload = () => {
   };
   const autoPopulate = () => {
     if (!gender || !category) return;
-    console.log("formValue: ", formValue);
     const brand = brands[randomIntFromInterval(0, brands.length - 1)];
     const color = colors[randomIntFromInterval(0, colors.length - 1)];
     const sold = randomIntFromInterval(0, 1000);
@@ -113,6 +112,13 @@ const ProductUpload = () => {
     const imageUrlArr = images.map((image) => image.url);
     setFormValue({ ...formValue, ...populatedFields, images: imageUrlArr });
   };
+  const isDisabled = () => {
+    return (
+      images.length < 4 ||
+      !!Object.keys(formValue).find((key) => formValue[key] === "")
+    );
+  };
+
   return (
     <section>
       <form onSubmit={handleSubmit} className="productupload">
@@ -256,7 +262,13 @@ const ProductUpload = () => {
             />
           </div>
         </div>
-        <button type="submit">Submit</button>
+        <button
+          disabled={isDisabled()}
+          className="productupload_submitCta"
+          type="submit"
+        >
+          Submit
+        </button>
       </form>
       <ProductCarousel />
     </section>

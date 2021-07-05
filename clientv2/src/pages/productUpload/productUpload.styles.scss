@@ -1,5 +1,4 @@
 .productupload {
-  min-height: 90vh;
   width: 90%;
   margin: 0 auto;
   display: flex;
@@ -9,6 +8,19 @@
     display: flex;
     flex-wrap: wrap;
     margin: 4rem auto;
+  }
+  &_submitCta {
+    border: none;
+    padding: 1rem 4rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: var(--success);
+    color: var(--neutral-50);
+    font-size: var(--header2);
+    &:disabled {
+      background: var(--error);
+      cursor: not-allowed;
+    }
   }
   &_wrapper {
     display: flex;
