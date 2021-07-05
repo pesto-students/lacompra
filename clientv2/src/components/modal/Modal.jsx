@@ -7,8 +7,8 @@ import { loginUser, modalClose, registerUser } from "./modalSlice";
 import "./modal.styles.scss";
 const Modal = () => {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("rai@example.com");
+  const [password, setPassword] = useState("password123");
   const [name, setName] = useState("");
 
   const [currentForm, setCurrentForm] = useState("login");
@@ -38,9 +38,13 @@ const Modal = () => {
     setPassword("password123");
   };
   const handleRegisterClick = () => {
+    setEmail("");
+    setPassword("");
     setCurrentForm("register");
   };
   const handleLoginClick = () => {
+    setEmail("rai@example.com");
+    setPassword("password123");
     setCurrentForm("login");
   };
   return (
