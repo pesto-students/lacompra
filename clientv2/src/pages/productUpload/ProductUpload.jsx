@@ -61,7 +61,7 @@ const ProductUpload = () => {
   }, []);
   useEffect(() => {
     autoPopulate();
-  }, [gender, category]);
+  }, [gender, category, color]);
 
   const randomIntFromInterval = (min, max) => {
     // min and max included
@@ -89,19 +89,19 @@ const ProductUpload = () => {
       (key) => formValue[key] === ""
     );
     if (emptyField) return toast.error(`${emptyField} cannot be empty`);
-    await dispatch(uploadProduct(formValue));
+    const imageUrlArr = images.map((image) => image.url);
+
+    await dispatch(uploadProduct({ ...formValue, images: imageUrlArr }));
     dispatch(fetchProducts());
   };
   const autoPopulate = () => {
-    if (!gender || !category) return;
+    if (!gender || !category || !color) return;
     const brand = brands[randomIntFromInterval(0, brands.length - 1)];
-    const color = colors[randomIntFromInterval(0, colors.length - 1)];
     const sold = randomIntFromInterval(0, 1000);
     const populatedFields = {
       title: `${gender} ${category} by ${brand}`,
       description: `${gender} ${category} by ${brand}. ${sold} sold in total. Color is ${color}`,
       price: randomIntFromInterval(1, 1000),
-      color,
       brand,
       s: randomIntFromInterval(0, 50),
       xl: randomIntFromInterval(0, 50),
@@ -109,8 +109,7 @@ const ProductUpload = () => {
       l: randomIntFromInterval(0, 50),
       sold,
     };
-    const imageUrlArr = images.map((image) => image.url);
-    setFormValue({ ...formValue, ...populatedFields, images: imageUrlArr });
+    setFormValue({ ...formValue, ...populatedFields });
   };
   const isDisabled = () => {
     return (
@@ -147,6 +146,17 @@ const ProductUpload = () => {
             </select>
           </div>
           <div className="productupload_wrapper">
+            <label htmlFor="color">color: </label>
+            <select
+              onChange={handleChange}
+              value={color}
+              name="color"
+              id="color"
+            >
+              {options(colors)}
+            </select>
+          </div>
+          <div className="productupload_wrapper">
             <label htmlFor="title">Title: </label>
             <input
               value={title}
@@ -178,19 +188,6 @@ const ProductUpload = () => {
               required
               disabled
             />
-          </div>
-
-          <div className="productupload_wrapper">
-            <label htmlFor="color">color: </label>
-            <select
-              disabled
-              onChange={handleChange}
-              value={color}
-              name="color"
-              id="color"
-            >
-              {options(colors)}
-            </select>
           </div>
 
           <div className="productupload_wrapper">
