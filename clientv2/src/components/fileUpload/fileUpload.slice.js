@@ -54,7 +54,9 @@ const fileUploadSlice = createSlice({
   name: 'image',
   initialState,
   reducers: {
-
+    resetImageArr: (state) => {
+      state.images = [];
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(uploadImages.pending, (state) => {
@@ -87,5 +89,5 @@ const fileUploadSlice = createSlice({
       });
   }
 });
-export const { } = fileUploadSlice.actions
+export const { resetImageArr } = fileUploadSlice.actions
 export default fileUploadSlice;

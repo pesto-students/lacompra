@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
 import FileUpload from "../../components/fileUpload/FileUpload";
+import { resetImageArr } from "../../components/fileUpload/fileUpload.slice";
 import { uploadProduct, rateProduct } from "./productUpload.slice";
 import ProductCarousel from "../../components/productCarousel/ProductCarousel.jsx";
 import { fetchProducts } from "../homepage/homepageSlice";
@@ -109,8 +110,22 @@ const ProductUpload = () => {
           review: starsSelected < 3 ? "Product is Bad" : "Product is Good",
         })
       );
-      dispatch(fetchProducts());
     }
+    setFormValue({
+      title: "",
+      description: "",
+      price: "",
+      color: "Black",
+      gender: "male",
+      brand: "",
+      category: "jeans",
+      s: "",
+      m: "",
+      xl: "",
+      l: "",
+      sold: "",
+    });
+    dispatch(resetImageArr());
     dispatch(fetchProducts());
   };
   const autoPopulate = () => {
