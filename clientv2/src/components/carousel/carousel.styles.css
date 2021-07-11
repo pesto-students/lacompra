@@ -100,7 +100,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  filter: grayscale(1);
+  filter: grayscale(0.6);
 }
 
 .productCarousel .carousel__slide_img:hover {

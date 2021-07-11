@@ -9,7 +9,7 @@
     align-items: center;
     position: sticky;
     top: 4.5vh;
-    z-index: 3;
+    z-index: 2;
     background: var(--neutral-200);
   }
   &_option {
@@ -38,7 +38,7 @@
 
     &:hover {
       opacity: 0.8;
-      filter: grayscale(1);
+      filter: grayscale(0.6);
 
       .productCarousel.carousel__cta {
         display: flex;

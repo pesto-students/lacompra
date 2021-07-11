@@ -9,6 +9,7 @@
   .icon {
     @include placeholder;
     margin: -10px;
+    cursor: pointer;
   }
   ::-webkit-input-placeholder {
     /* Edge */
