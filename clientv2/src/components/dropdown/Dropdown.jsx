@@ -4,7 +4,11 @@ import { useHistory } from "react-router-dom";
 import { fetchfilteredProducts } from "../filterSidedrawer/filterSidedrawerSlice";
 import "./dropdown.styles.scss";
 
-const Dropdown = ({ itemsArr, inputValue = "", setIsOpen }) => {
+const Dropdown = ({
+  itemsArr = ["jeans", "trousers", "tshirts", "shirts", "jackets"],
+  inputValue = "",
+  setIsOpen,
+}) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
