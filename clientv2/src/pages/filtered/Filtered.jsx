@@ -73,9 +73,7 @@ const Filtered = () => {
             >
               Add to wishlist
             </button>
-            <h5 className="filtered_title">
-              {product.title} by <span>{product.brand}</span>
-            </h5>
+            <h5 className="filtered_title">{product.title}</h5>
           </div>
         ))}
       </div>
