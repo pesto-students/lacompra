@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 const Hero = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const names = ["jackets", "jeans", "shoe", "tshirt"];
+  const names = ["jackets", "jeans", "tshirts"];
   const handleCategoryClick = (category) => {
     dispatch(
       fetchfilteredProducts({
