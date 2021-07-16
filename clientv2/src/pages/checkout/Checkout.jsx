@@ -1,10 +1,18 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Cart from "../../components/cart/Cart";
 import Address from "../../components/address/Address";
 import "./checkout.styles.scss";
 
 const Checkout = () => {
-  // const dispatch = useDispatch();
+  const history = useHistory();
+  const { isLoggedIn } = useSelector((state) => state.modal);
+
+  useEffect(() => {
+    if (!isLoggedIn) history.push("/");
+    // eslint-disable-next-line
+  }, [isLoggedIn]);
 
   return (
     <section className="checkout">

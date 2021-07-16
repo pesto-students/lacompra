@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import backendDomain from "../../utils/backend";
-
+import "./info.styles.scss";
 const Info = () => {
-  // const dispatch = useDispatch();
   let { status, id } = useParams();
   const [message, setMessage] = useState("");
   const verifyPayment = async () => {
@@ -26,14 +25,18 @@ const Info = () => {
   }, []);
 
   return (
-    <section>
+    <section className="info">
       {" "}
       <div class="card">
-        <div>
-          <i class="checkmark">✓</i>
-        </div>
-        <h1>{message}</h1>
-        <p>Payment {message}</p>
+        <i class="checkmark">
+          {message !== "success" ? (
+            <span className="error">&#x2717;</span>
+          ) : (
+            <span className="success">&#10003;</span>
+          )}
+        </i>
+        <h1 className="heading">{message}</h1>
+        <p className="description">Payment {message}</p>
       </div>
     </section>
   );

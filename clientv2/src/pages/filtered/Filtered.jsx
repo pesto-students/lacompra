@@ -20,7 +20,7 @@ const Filtered = () => {
 
   const handleAddToCart = (item) => {
     const cartItemsTransformed = [];
-    cartItems.forEach((cartItem) => {
+    cartItems?.forEach((cartItem) => {
       if (item.id !== cartItem.product.id) {
         cartItemsTransformed.push({
           product: cartItem.product.id,

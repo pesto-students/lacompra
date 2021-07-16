@@ -7,7 +7,7 @@ const Cart = require('../models/cartModel');
 const Product = require('../models/productModel.js');
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-let YOUR_DOMAIN = 'http://localhost:3002';
+let YOUR_DOMAIN = process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'https://lacompra-beta.herokuapp.com';
 
 //Routes handler
 exports.getAllUsers = catchAysnc(async (req, res, next) => {
@@ -209,7 +209,6 @@ exports.stripeCheckoutSession = catchAysnc(async (req, res, next) => {
 exports.verifyPayment = catchAysnc(async (req, res, next) => {
   const { id } = req.params;
   if (id == "undefined") {
-    console.log('id: ', id);
     return next(
       new AppError(
         'Canceled',
